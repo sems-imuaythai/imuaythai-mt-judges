@@ -1,12 +1,12 @@
 package com.imuaythai.mtjudges.login.model
 
-import com.imuaythai.mtjudges.common.UseCase
+import com.imuaythai.mtjudges.common.model.UseCase
 import com.imuaythai.mtjudges.provider.MTWebService
 import javax.inject.Inject
 
-class LoadArtistsData @Inject constructor(
+class LoadArtistsDataUseCase @Inject constructor(
     var webService : MTWebService
-) : UseCase<String,String>{
+) : UseCase<String, String> {
 
     override fun execute(request: String): String {
         Thread.sleep(1000)

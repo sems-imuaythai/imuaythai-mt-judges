@@ -1,4 +1,4 @@
-package com.imuaythai.mtjudges.common
+package com.imuaythai.mtjudges.common.model
 
 class Resource<T> private constructor(val status: Status, val data: T?, val exception: Throwable?) {
     enum class Status {

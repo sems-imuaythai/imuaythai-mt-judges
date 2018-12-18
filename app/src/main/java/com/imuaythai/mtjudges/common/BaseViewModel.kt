@@ -2,6 +2,8 @@ package com.imuaythai.mtjudges.common
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.imuaythai.mtjudges.common.model.Resource
+import com.imuaythai.mtjudges.common.model.UseCase
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -13,7 +15,7 @@ open class BaseViewModel : ViewModel() {
 
     private val disposables = CompositeDisposable()
 
-    fun <REQUEST,RESPONSE> execute( useCase: UseCase<REQUEST,RESPONSE> , request : REQUEST , onSuccess : Consumer<in RESPONSE> , onError : Consumer<in Throwable> ){
+    fun <REQUEST,RESPONSE> execute(useCase: UseCase<REQUEST, RESPONSE>, request : REQUEST, onSuccess : Consumer<in RESPONSE>, onError : Consumer<in Throwable> ){
         disposables.add(Observable.create(ObservableOnSubscribe<RESPONSE> { subscriber ->
             try {
                 subscriber.onNext(useCase.execute(request))
@@ -34,7 +36,7 @@ open class BaseViewModel : ViewModel() {
             .subscribe(onSuccess, onError))
     }
 
-    fun <REQUEST,RESPONSE> execute( useCase: UseCase<REQUEST,RESPONSE> , request : REQUEST , liveData: MutableLiveData<Resource<RESPONSE>> ){
+    fun <REQUEST,RESPONSE> execute(useCase: UseCase<REQUEST, RESPONSE>, request : REQUEST, liveData: MutableLiveData<Resource<RESPONSE>> ){
         liveData.value = Resource.loading()
         execute(useCase,request,Consumer { response ->
             liveData.value = Resource.success(response)

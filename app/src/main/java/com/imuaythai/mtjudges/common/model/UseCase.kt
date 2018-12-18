@@ -1,4 +1,4 @@
-package com.imuaythai.mtjudges.common
+package com.imuaythai.mtjudges.common.model
 
 interface UseCase<REQUEST,RESPONSE> {
 

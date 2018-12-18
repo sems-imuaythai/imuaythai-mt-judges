@@ -3,13 +3,13 @@ package com.imuaythai.mtjudges.login
 import androidx.lifecycle.MutableLiveData
 import com.imuaythai.mtjudges.common.BaseViewModel
 import com.imuaythai.mtjudges.provider.MTWebService
-import com.imuaythai.mtjudges.common.Resource
-import com.imuaythai.mtjudges.login.model.LoadArtistsData
+import com.imuaythai.mtjudges.common.model.Resource
+import com.imuaythai.mtjudges.login.model.LoadArtistsDataUseCase
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
     var webService : MTWebService,
-    var loadArtistsData : LoadArtistsData
+    var loadArtistsDataUseCase : LoadArtistsDataUseCase
 ) : BaseViewModel() {
 
     var userName : MutableLiveData<String> = MutableLiveData()
@@ -23,6 +23,10 @@ class LoginViewModel @Inject constructor(
 
     fun clicked() = execute(webService.searchArtist("aaaa"), artistsLists)
 
-    fun clicked2() = execute(loadArtistsData,"aaaa", artistsLists)
+    fun clicked2() = execute(loadArtistsDataUseCase,"aaaa", artistsLists)
+
+    fun setData(artistId: String) {
+
+    }
 
 }

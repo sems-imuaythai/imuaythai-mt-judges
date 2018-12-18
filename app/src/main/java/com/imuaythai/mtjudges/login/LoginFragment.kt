@@ -1,46 +1,31 @@
 package com.imuaythai.mtjudges.login
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import com.imuaythai.mtjudges.application.MTJudgesApplication
 import com.imuaythai.mtjudges.R
+import com.imuaythai.mtjudges.application.injection.ApplicationComponent
+import com.imuaythai.mtjudges.common.BaseFragment
 import com.imuaythai.mtjudges.login.injection.LoginModule
-import com.imuaythai.mtjudges.common.Resource
+import com.imuaythai.mtjudges.common.model.Resource
 
 import kotlinx.android.synthetic.main.login_fragment.*
-import javax.inject.Inject
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment<LoginViewModel>() {
 
     companion object {
         fun newInstance() = LoginFragment()
     }
 
-    private lateinit var viewModel: LoginViewModel
+    override fun provideViewLayout(): Int = R.layout.login_fragment
 
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        MTJudgesApplication.get(requireContext())
-            .applicationComponent
-            .plus(LoginModule())
-            .inject(this)
+    override fun onInjectComponent(component: ApplicationComponent) {
+        component.plus(LoginModule()).inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.login_fragment, container, false)
-    }
+    override fun provideViewModel(provider: ViewModelProvider): LoginViewModel = provider.get(LoginViewModel::class.java)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
+    override fun onBindView(viewModel: LoginViewModel) {
         viewModel.userName.observe(this, Observer { userName -> message_text_view.text = userName })
         viewModel.artistsLists.observe(this, Observer {  data ->
             when(data.status){
@@ -64,6 +49,10 @@ class LoginFragment : Fragment() {
         })
         click_button.setOnClickListener { _ -> viewModel.clicked() }
         click_button2.setOnClickListener { _ -> viewModel.clicked2() }
+    }
+
+    override fun setArguments(viewModel: LoginViewModel) {
+        viewModel.setData(arguments!!.getString("artistId",""));
     }
 
 }
