@@ -30,6 +30,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"   />
 
+    <Button
+            android:id="@+id/click_button3"
+            android:text="Click3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"   />
+
     <TextView
             android:id="@+id/resource_text_view"
             android:layout_width="match_parent"

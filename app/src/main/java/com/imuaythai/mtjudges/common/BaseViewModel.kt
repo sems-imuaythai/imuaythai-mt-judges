@@ -2,6 +2,8 @@ package com.imuaythai.mtjudges.common
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.imuaythai.mtjudges.application.navigation.FragmentNavigateAction
+import com.imuaythai.mtjudges.application.navigation.NavigateAction
 import com.imuaythai.mtjudges.common.model.Resource
 import com.imuaythai.mtjudges.common.model.UseCase
 import io.reactivex.Observable
@@ -12,6 +14,8 @@ import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 open class BaseViewModel : ViewModel() {
+
+    val fragmentNavigateAction : MutableLiveData<NavigateAction> = MutableLiveData()
 
     private val disposables = CompositeDisposable()
 
@@ -56,6 +60,10 @@ open class BaseViewModel : ViewModel() {
 
     override fun onCleared() {
         disposables.clear()
+    }
+
+    fun navigate(actionFragment : NavigateAction){
+        fragmentNavigateAction.value = actionFragment
     }
 
 }

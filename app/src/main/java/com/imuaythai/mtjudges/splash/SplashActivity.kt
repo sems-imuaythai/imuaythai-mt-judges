@@ -2,22 +2,25 @@ package com.imuaythai.mtjudges.splash
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.R
+import com.imuaythai.mtjudges.application.injection.ApplicationComponent
+import com.imuaythai.mtjudges.common.BaseActivity
 import com.imuaythai.mtjudges.login.LoginFragment
 
 import kotlinx.android.synthetic.main.splash_activity.*
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity<SplashViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash_activity)
-        if(savedInstanceState == null){
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container,LoginFragment.newInstance())
-                .commit()
-        }
+    override fun provideViewLayout(): Int = R.layout.splash_activity
+
+    override fun onInjectComponent(component: ApplicationComponent) {
+        component.inject(this)
     }
 
+    override fun provideViewModel(provider: ViewModelProvider): SplashViewModel = provider.get(SplashViewModel::class.java)
+
+    override fun onBindView(viewModel: SplashViewModel) { }
+
+    override fun setArguments(viewModel: SplashViewModel) { }
 }

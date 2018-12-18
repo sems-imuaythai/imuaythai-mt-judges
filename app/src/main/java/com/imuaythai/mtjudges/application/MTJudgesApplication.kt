@@ -15,9 +15,7 @@ class MTJudgesApplication : Application() {
         applicationComponent = DaggerApplicationComponent.create()
     }
 
-
     companion object {
         fun get(context : Context) : MTJudgesApplication = context.applicationContext as MTJudgesApplication;
     }
-
 }

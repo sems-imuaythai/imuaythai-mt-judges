@@ -13,10 +13,6 @@ import kotlinx.android.synthetic.main.login_fragment.*
 
 class LoginFragment : BaseFragment<LoginViewModel>() {
 
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
-
     override fun provideViewLayout(): Int = R.layout.login_fragment
 
     override fun onInjectComponent(component: ApplicationComponent) {
@@ -49,10 +45,12 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
         })
         click_button.setOnClickListener { _ -> viewModel.clicked() }
         click_button2.setOnClickListener { _ -> viewModel.clicked2() }
+        click_button3.setOnClickListener { _ -> viewModel.clicked3() }
     }
 
     override fun setArguments(viewModel: LoginViewModel) {
-        viewModel.setData(arguments!!.getString("artistId",""));
+        viewModel.setData(arguments!!.getInt("artistId",11));
     }
 
 }
+

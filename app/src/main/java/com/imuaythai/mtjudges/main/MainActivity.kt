@@ -1,14 +1,23 @@
 package com.imuaythai.mtjudges.main
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.R
+import com.imuaythai.mtjudges.application.injection.ApplicationComponent
+import com.imuaythai.mtjudges.common.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<MainViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+    override fun provideViewLayout(): Int = R.layout.main_activity
+
+    override fun provideFragmentContainer() : Int = R.id.container
+
+    override fun onInjectComponent(component: ApplicationComponent) {
+        component.inject(this)
     }
 
+    override fun provideViewModel(provider: ViewModelProvider): MainViewModel = provider.get(MainViewModel::class.java)
+
+    override fun onBindView(viewModel: MainViewModel) { }
+
+    override fun setArguments(viewModel: MainViewModel) { }
 }

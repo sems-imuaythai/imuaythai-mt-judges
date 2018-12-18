@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.application.injection.view.model.ViewModelFactory
 import com.imuaythai.mtjudges.application.injection.view.model.ViewModelKey
 import com.imuaythai.mtjudges.application.injection.view.model.EmptyViewModel
+import com.imuaythai.mtjudges.main.MainViewModel
+import com.imuaythai.mtjudges.splash.SplashViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -17,6 +19,14 @@ class ApplicationModule {
 
     @Provides @IntoMap
     @ViewModelKey(EmptyViewModel::class)
-    fun provideViewModel(): ViewModel = EmptyViewModel();
+    fun provideEmptyViewModel(): ViewModel = EmptyViewModel();
+
+    @Provides @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    fun provideMainViewModel(mainViewModel : MainViewModel): ViewModel = mainViewModel
+
+    @Provides @IntoMap
+    @ViewModelKey(SplashViewModel::class)
+    fun provideSplashViewModel(splashViewModel : SplashViewModel): ViewModel = splashViewModel
 
 }
