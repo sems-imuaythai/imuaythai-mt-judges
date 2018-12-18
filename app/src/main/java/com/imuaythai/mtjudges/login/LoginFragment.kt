@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.imuaythai.mtjudges.application.MTJudgesApplication
 import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.login.injection.LoginModule
-import com.imuaythai.mtjudges.provider.Resource
+import com.imuaythai.mtjudges.common.Resource
 
 import kotlinx.android.synthetic.main.login_fragment.*
 import javax.inject.Inject
@@ -42,20 +42,28 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
         viewModel.userName.observe(this, Observer { userName -> message_text_view.text = userName })
-        viewModel.data.observe(this, Observer {  data ->
+        viewModel.artistsLists.observe(this, Observer {  data ->
             when(data.status){
                 Resource.Status.LOADING -> {
                     Log.e("Resource","LOADING");
+                    resource_text_view.text = "LOADING"
                 }
                 Resource.Status.ERROR -> {
                     Log.e("Resource","ERROR");
+                    resource_text_view.text = "ERROR"
                 }
                 Resource.Status.SUCCESS -> {
                     Log.e("Resource","SUCCESS");
+                    resource_text_view.text = "SUCCESS"
+                }
+                Resource.Status.EMPTY -> {
+                    Log.e("Resource","EMPTY");
+                    resource_text_view.text = "EMPTY"
                 }
             }
         })
         click_button.setOnClickListener { _ -> viewModel.clicked() }
+        click_button2.setOnClickListener { _ -> viewModel.clicked2() }
     }
 
 }

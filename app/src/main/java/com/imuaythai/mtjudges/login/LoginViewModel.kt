@@ -1,42 +1,28 @@
 package com.imuaythai.mtjudges.login
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.imuaythai.mtjudges.login.service.LoginService
+import com.imuaythai.mtjudges.common.BaseViewModel
 import com.imuaythai.mtjudges.provider.MTWebService
-import com.imuaythai.mtjudges.provider.Resource
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.imuaythai.mtjudges.common.Resource
+import com.imuaythai.mtjudges.login.model.LoadArtistsData
 import javax.inject.Inject
-import io.reactivex.disposables.CompositeDisposable
 
 class LoginViewModel @Inject constructor(
-    var loginService : LoginService,
-    var webService : MTWebService
-) : ViewModel() {
+    var webService : MTWebService,
+    var loadArtistsData : LoadArtistsData
+) : BaseViewModel() {
 
     var userName : MutableLiveData<String> = MutableLiveData()
 
-    var data : MutableLiveData<Resource<String>> = MutableLiveData()
+    var artistsLists : MutableLiveData<Resource<String>> = MutableLiveData()
 
-    private val disposables = CompositeDisposable()
-
-    fun clicked() {
-        load();
-        this.userName.value = loginService.login("asd","asdas");
+    init {
+        artistsLists.value = Resource.empty()
+        userName.value = "Seweryn"
     }
 
-    fun load() {
-        disposables.add(webService.searchArtist("aaaa")
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({ response ->
-                Resource.success(response)
-            }, { exception ->
-                data.value = Resource.error( exception)
-            }))
-    }
+    fun clicked() = execute(webService.searchArtist("aaaa"), artistsLists)
 
-    override fun onCleared() {
-        disposables.clear()
-    }
+    fun clicked2() = execute(loadArtistsData,"aaaa", artistsLists)
 
 }
