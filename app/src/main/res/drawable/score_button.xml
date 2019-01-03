@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+
+    <item android:state_enabled="false"  >
+
+        <shape android:shape="rectangle" >
+            <corners
+                android:radius="0dp"
+                />
+            <solid
+                android:color="#474747"
+                />
+            <padding
+                android:left="0dp"
+                android:top="0dp"
+                android:right="0dp"
+                android:bottom="0dp"
+                />
+            <stroke
+                android:width="2dp"
+                android:color="#878787"
+                />
+        </shape>
+
+    </item>
+
+    <item android:state_checked="true"  >
+
+        <shape android:shape="rectangle" >
+            <corners
+                android:radius="0dp"
+                />
+            <solid
+                android:color="#55474747"
+                />
+            <padding
+                android:left="0dp"
+                android:top="0dp"
+                android:right="0dp"
+                android:bottom="0dp"
+                />
+            <stroke
+                android:width="2dp"
+                android:color="#878787"
+                />
+        </shape>
+
+    </item>
+
+
+    <item android:state_pressed="true"  >
+
+        <shape android:shape="rectangle" >
+            <corners
+                android:radius="0dp"
+                />
+            <solid
+                android:color="#808080"
+                />
+            <padding
+                android:left="0dp"
+                android:top="0dp"
+                android:right="0dp"
+                android:bottom="0dp"
+                />
+            <stroke
+                android:width="2dp"
+                android:color="#878787"
+                />
+        </shape>
+
+    </item>
+
+    <item >
+
+        <shape android:shape="rectangle" >
+            <corners
+                android:radius="0dp"
+                />
+            <solid
+                android:color="#E0E0E0"
+                />
+            <padding
+                android:left="0dp"
+                android:top="0dp"
+                android:right="0dp"
+                android:bottom="0dp"
+                />
+            <stroke
+                android:width="2dp"
+                android:color="#878787"
+                />
+        </shape>
+
+    </item>
+
+
+</selector>

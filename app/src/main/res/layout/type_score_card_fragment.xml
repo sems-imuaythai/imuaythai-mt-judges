@@ -1,0 +1,450 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="muaythai.com.muaythaijudges.fragments.TypeScoreCardFragment"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/linearLayout4"
+    android:paddingBottom="5dp"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/red"
+        android:paddingBottom="5dp"
+        >
+        <TextView
+
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/font_lighten"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[player_red]"
+            android:id="@+id/Red_label"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/Red_label">
+
+            <RelativeLayout
+                android:paddingLeft="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/relativeLayout"
+                android:background="@drawable/rounded_corners_blaxk_overlay"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KO"
+                    android:id="@+id/textView5"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="3dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:textColor="@color/font_lighten"
+                    />
+
+                <ToggleButton
+                    android:textOn="HEAD"
+                    android:textOff="HEAD"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_head_red"
+                    android:layout_below="@+id/textView5"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    />
+
+                <ToggleButton
+                    android:textOn="BODY"
+                    android:textOff="BODY"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_body_red"
+                    android:layout_below="@+id/button_head_red"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:paddingLeft="4dp"
+                android:paddingBottom="4dp"
+                android:paddingRight="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/relativeLayout"
+                android:background="@drawable/rounded_corners_blaxk_overlay"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/relativeLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RSC"
+                    android:id="@+id/textView6"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="3dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:textColor="@color/font_lighten"/>
+
+                <ToggleButton
+                    android:textOn="INJ"
+                    android:textOff="INJ"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_inj_red"
+                    android:layout_below="@+id/textView6"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <ToggleButton
+                    android:textOn="CCTL"
+                    android:textOff="CCTL"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_CCTL_red"
+                    android:layout_below="@+id/button_inj_red"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <ToggleButton
+                    android:textOn="INJ HEAD"
+                    android:textOff="INJ HEAD"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_inj_h_red"
+                    android:layout_below="@+id/textView6"
+                    android:layout_toRightOf="@+id/button_inj_red"
+                    android:layout_toEndOf="@+id/button_inj_red" />
+
+                <ToggleButton
+                    android:textOn="INJ BODY"
+                    android:textOff="INJ BODY"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_inj_b_red"
+                    android:layout_below="@+id/textView6"
+                    android:layout_toRightOf="@+id/button_inj_h_red"
+                    android:layout_toEndOf="@+id/button_inj_h_red" />
+
+                <ToggleButton
+                    android:textOn="OUTCLASS"
+                    android:textOff="OUTCLASS"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OUTCLASS"
+                    android:id="@+id/button_outclass_red"
+                    android:layout_alignLeft="@+id/button_inj_h_red"
+                    android:layout_below="@+id/button_inj_h_red" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayout"
+                android:background="@drawable/rounded_corners_blaxk_overlay"
+                android:padding="4dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp">
+
+                <ToggleButton
+                    android:textOn="NOCONTEST"
+                    android:textOff="NOCONTEST"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_nocontest_red"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <ToggleButton
+                    android:textOn="RET"
+                    android:textOff="RET"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_ret_red"
+                    android:layout_toRightOf="@+id/button_nocontest_red"
+                    android:layout_toEndOf="@+id/button_nocontest_red" />
+
+                <ToggleButton
+                    android:textOn="WO"
+                    android:textOff="WO"
+                    style="@style/score_type_button_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_wo_red"
+                    android:layout_toRightOf="@+id/button_ret_red"
+                    android:layout_toEndOf="@+id/button_ret_red" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/blue"
+        android:paddingBottom="5dp"
+        >
+
+        <TextView
+
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/font_lighten"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[player_blu]"
+            android:id="@+id/Blu_label"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/Blu_label">
+
+
+        <RelativeLayout
+            android:paddingLeft="4dp"
+            android:paddingBottom="4dp"
+            android:paddingRight="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout2"
+            android:background="@drawable/rounded_corners_blaxk_overlay"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp">
+
+            <ToggleButton
+                android:textOn="HEAD"
+                android:textOff="HEAD"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_head_blu"
+                android:layout_below="@+id/textView7"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KO"
+                android:id="@+id/textView7"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="3dp"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:textColor="@color/font_lighten" />
+
+            <ToggleButton
+                android:textOn="BODY"
+                android:textOff="BODY"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_body_blu"
+                android:layout_below="@+id/button_head_blu"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:paddingLeft="4dp"
+            android:paddingBottom="4dp"
+            android:paddingRight="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_blaxk_overlay"
+            android:layout_toRightOf="@+id/relativeLayout2"
+            android:layout_marginRight="5dp"
+            android:id="@+id/relativeLayout3">
+
+            <ToggleButton
+                android:textOn="INJ"
+                android:textOff="INJ"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_inj_blu"
+                android:layout_below="@+id/textView8"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ToggleButton
+                android:textOn="CCTL"
+                android:textOff="CCTL"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_CCTL_blu"
+                android:layout_below="@+id/button_inj_blu"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ToggleButton
+                android:textOn="INJ HEAD"
+                android:textOff="INJ HEAD"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_inj_h_blu"
+                android:layout_below="@+id/textView8"
+                android:layout_toRightOf="@+id/button_inj_blu"
+                android:layout_toEndOf="@+id/button_inj_blu" />
+
+            <ToggleButton
+                android:textOn="INJ BODY"
+                android:textOff="INJ BODY"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_inj_b_blu"
+                android:layout_below="@+id/textView8"
+                android:layout_toRightOf="@+id/button_inj_h_blu"
+                android:layout_toEndOf="@+id/button_inj_h_blu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RSC"
+                android:id="@+id/textView8"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="3dp"
+                android:textStyle="bold"
+                android:textSize="14dp"
+                android:textColor="@color/font_lighten" />
+
+            <ToggleButton
+                android:textOn="OUTCLASS"
+                android:textOff="OUTCLASS"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_outclass_blu"
+                android:layout_alignLeft="@+id/button_inj_h_blu"
+                android:layout_alignStart="@+id/button_inj_h_blu"
+                android:layout_below="@+id/button_inj_h_blu" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corners_blaxk_overlay"
+            android:padding="4dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@+id/relativeLayout3"
+            android:layout_marginTop="5dp">
+
+            <ToggleButton
+                android:textOn="NOCONTEST"
+                android:textOff="NOCONTEST"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_nocontest_blu"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ToggleButton
+                android:textOn="RET"
+                android:textOff="RET"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_ret_blu"
+                android:layout_toRightOf="@+id/button_nocontest_blu"
+                android:layout_toEndOf="@+id/button_nocontest_blu" />
+
+            <ToggleButton
+                android:textOn="WO"
+                android:textOff="WO"
+                style="@style/score_type_button_blu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_wo_blu"
+                android:layout_toRightOf="@+id/button_ret_blu"
+                android:layout_toEndOf="@+id/button_ret_blu" />
+        </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
+
+    <Button
+
+        android:text="ACCEPT"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        style="@style/points_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="200dp"
+        android:id="@+id/button_accept"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

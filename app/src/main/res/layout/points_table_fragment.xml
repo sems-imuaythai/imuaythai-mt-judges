@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Round points"
+                android:id="@+id/textView18"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:id="@+id/rov_round_pts_red">
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/round_pts_sum_red"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Points deduct"
+                android:id="@+id/textView24"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:id="@+id/rov_deduct_red" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/deduct_sum_red"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Net points"
+                android:id="@+id/textView29"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:id="@+id/rov_net_red" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/net_sum_red"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Round"
+                android:id="@+id/textView34"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:id="@+id/rov_rounds" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="vs"
+                android:id="@+id/textView38"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Net points"
+                android:id="@+id/textView39"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:id="@+id/rov_net_blu" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/net_sum_blu"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Points deduct"
+                android:id="@+id/textView44"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:id="@+id/rov_deduct_blu" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/deduct_sum_blu"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Round points"
+                android:id="@+id/textView49"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:id="@+id/rov_round_pts_blu" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/round_pts_sum_blu"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical|center_horizontal" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

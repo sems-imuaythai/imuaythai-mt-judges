@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout5">
+
+        <TextView
+
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/font_lighten"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[player_red]"
+            android:id="@+id/Red_label"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@color/red" />
+
+        <TextView
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/font_lighten"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[player_blu]"
+            android:id="@+id/Blu_label"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@color/blue" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout5"
+        android:gravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="65dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="For most leading off or showing better style"
+                android:id="@+id/button_case_1"
+                android:layout_weight="1"
+                android:capitalize="characters"
+                android:textSize="12sp"
+                android:layout_margin="5dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="For showing better defence"
+                android:id="@+id/button_case_2"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:layout_margin="5dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Other"
+                android:id="@+id/button_case_3"
+                android:layout_weight="1"
+                android:layout_margin="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+             >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Red"
+                    android:id="@+id/button_red" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Winner"
+                android:id="@+id/textView15"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Blue"
+                android:id="@+id/button_blue" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="Accept"
+            android:id="@+id/button_accept" />
+    </LinearLayout>
+
+</RelativeLayout>

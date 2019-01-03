@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp"
+        android:id="@+id/linearLayout6"
+        android:minWidth="200dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="[title]"
+            android:id="@+id/textView_title"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/font_dark"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/font_dark"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"></FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="[description]"
+        android:id="@+id/textView_desc"
+        android:gravity="center_horizontal"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textSize="15dp"
+        android:textColor="@color/font_dark" />
+
+
+
+    <Button
+        android:textOff="ACCEPT"
+        android:textOn="ACCEPT"
+        style="@style/points_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_ok"
+        android:layout_gravity="center_horizontal"
+        android:text="ok" />
+
+</LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignBottom="@+id/linearLayout6"
+        android:layout_alignRight="@+id/linearLayout6"
+        android:layout_alignEnd="@+id/linearLayout6"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:clickable="false"
+        android:visibility="gone"
+        android:background="@color/black_overlay"
+        android:id="@+id/overlay">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressSpinner"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
+
+</RelativeLayout>

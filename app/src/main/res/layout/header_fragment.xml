@@ -1,0 +1,93 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="80dp" >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/header">
+
+
+            <muaythai.com.muaythaijudges.widget.Timer
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:id="@+id/timer"
+                android:background="#E53935"
+                android:gravity="center_vertical|center_horizontal"
+            />
+
+
+        <TextView
+            style="@style/header_label"
+            android:text="Logged as: "
+            android:id="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            style="@style/header_label"
+            android:text="Weight category: "
+            android:id="@+id/textView2"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            style="@style/header_label"
+            android:text="Fight duration: "
+            android:id="@+id/textView3"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            style="@style/header_label"
+            android:text="Referee: "
+            android:id="@+id/textView4"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            style="@style/header_text"
+            android:text="Marta Kauża ( judge )"
+            android:id="@+id/textView_login"
+            android:layout_toRightOf="@+id/textView"
+            android:layout_toEndOf="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/textView" />
+
+        <TextView
+            style="@style/header_text"
+            android:text="A class senior male ( 60-60,3 )kg"
+            android:id="@+id/textView_w_category"
+            android:layout_alignTop="@+id/textView2"
+            android:layout_toRightOf="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2"
+            android:layout_above="@+id/textView3" />
+
+        <TextView
+            style="@style/header_text"
+            android:text="3x3min"
+            android:id="@+id/textView_fight_duration"
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_below="@+id/textView2"
+            android:layout_toRightOf="@+id/textView3" />
+
+        <TextView
+            style="@style/header_text"
+            android:text="Andrzej Kapusta"
+            android:id="@+id/textView_referee"
+            android:layout_toEndOf="@+id/textView4"
+            android:layout_below="@+id/textView3"
+            android:layout_toRightOf="@+id/textView4" />
+
+    </RelativeLayout>
+
+</FrameLayout>

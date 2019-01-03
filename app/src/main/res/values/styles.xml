@@ -1,17 +1,133 @@
 <resources>
 
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
     <!-- Base application theme. -->
+    <!-- Customize your theme here. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-    <style name="AppTheme.NoActionBar">
+
+        <!--item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item-->
+
     </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="ButtonBar">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:background">@android:drawable/bottom_bar</item>
+    </style>
+
+    <style name="ButtonBarButton" />
+
+
+    <style name="header_label" parent="@android:style/TextAppearance.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize" >15sp</item>
+        <item name="android:textColor">@color/font_dark</item>
+        <item name="android:typeface">normal</item>
+    </style>
+
+    <style name="header_text" parent="header_label">
+        <item name="android:textStyle" >bold</item>
+    </style>
+
+
+    <style name="score_label" parent="@android:style/TextAppearance.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:height">@dimen/sc_button_height</item>
+        <item name="android:textSize" >@dimen/sc_button_txt_size</item>
+        <item name="android:textColor">@color/font_lighten</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle" >bold</item>
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingBottom">7dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="score_button" parent="@android:style/TextAppearance">
+        <item name="android:height">@dimen/sc_button_height</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle" >bold</item>
+        <item name="android:textColor">@color/font_dark</item>
+        <item name="android:textSize" >@dimen/sc_button_txt_size</item>
+        <item name="android:background">@drawable/score_button</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <style name="points_button" parent="@android:style/TextAppearance">
+        <item name="android:height">@dimen/sc_button_height</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle" >bold</item>
+        <item name="android:textColor">@drawable/points_font_selector</item>
+        <item name="android:textSize" >@dimen/sc_button_txt_size</item>
+        <item name="android:background">@drawable/points_button</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <style name="points_radio" parent="@android:style/Widget.CompoundButton"  >
+        <item name="android:background">@drawable/points_button</item>
+        <item name="android:button">@null</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle" >bold</item>
+        <item name="android:textColor">@drawable/points_font_selector</item>
+        <item name="android:textSize" >@dimen/sc_button_txt_size</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:minHeight">@dimen/sc_button_height</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="score_type_button" parent="@style/points_radio">
+        <item name="android:height">@dimen/sc_button_height</item>
+        <item name="android:textSize" >@dimen/sc_button_txt_size</item>
+    </style>
+
+    <style name="score_type_button_red" parent="@style/points_radio">
+        <item name="android:height">@dimen/sc_button_height</item>
+        <item name="android:textSize" >14sp</item>
+        <item name="android:background">@drawable/type_score_button_red</item>
+    </style>
+
+    <style name="score_type_button_blu" parent="@style/points_radio">
+        <item name="android:height">@dimen/sc_button_height</item>
+        <item name="android:textSize" >14sp</item>
+        <item name="android:background">@drawable/type_score_button_blu</item>
+    </style>
+
+    <style name="table_header" parent="@android:style/TextAppearance.Small">
+        <item name="android:layout_margin" >2dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/sc_button_height</item>
+        <item name="android:textSize" >@dimen/sc_button_txt_size</item>
+        <item name="android:textColor">@color/font_lighten</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle" >bold</item>
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingBottom">7dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+    </style>
 
 </resources>
