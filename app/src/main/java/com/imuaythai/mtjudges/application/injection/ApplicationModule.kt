@@ -1,5 +1,7 @@
 package com.imuaythai.mtjudges.application.injection
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.application.injection.view.model.ViewModelFactory
@@ -11,8 +13,15 @@ import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
 
+
+
 @Module
-class ApplicationModule {
+class ApplicationModule constructor(
+    var context : Context
+){
+
+    @Provides
+    fun provideApplicationContext() : Context = context;
 
     @Provides
     fun provideViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory = factory;
@@ -28,5 +37,9 @@ class ApplicationModule {
     @Provides @IntoMap
     @ViewModelKey(SplashViewModel::class)
     fun provideSplashViewModel(splashViewModel : SplashViewModel): ViewModel = splashViewModel
+
+    @Provides
+    fun provideSharedPreferences(context: Context) : SharedPreferences = context.getSharedPreferences("com.imuaythai.mtjudges.preferences", 0);
+
 
 }

@@ -4,6 +4,8 @@ import com.imuaythai.mtjudges.login.injection.LoginComponent
 import com.imuaythai.mtjudges.login.injection.LoginModule
 import com.imuaythai.mtjudges.main.MainActivity
 import com.imuaythai.mtjudges.provider.injection.MTWebServiceModule
+import com.imuaythai.mtjudges.settings.injection.SettingsComponent
+import com.imuaythai.mtjudges.settings.injection.SettingsModule
 import com.imuaythai.mtjudges.splash.SplashActivity
 import com.imuaythai.mtjudges.time.judge.injection.TimeJudgeComponent
 import com.imuaythai.mtjudges.time.judge.injection.TimeJudgeModule
@@ -17,6 +19,8 @@ interface ApplicationComponent {
     fun plus( loginModule : LoginModule ) : LoginComponent
 
     fun plus( timeJudgeModule: TimeJudgeModule ) : TimeJudgeComponent
+
+    fun plus( timeJudgeModule: SettingsModule ) : SettingsComponent
 
     fun inject(activity: MainActivity)
 

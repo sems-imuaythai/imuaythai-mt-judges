@@ -22,9 +22,9 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
     override fun provideViewModel(provider: ViewModelProvider): LoginViewModel = provider.get(LoginViewModel::class.java)
 
     override fun onBindView(viewModel: LoginViewModel) {
-        viewModel.userName.observe(this, Observer { userName -> message_text_view.text = userName })
+        //viewModel.userName.observe(this, Observer { userName -> message_text_view.text = userName })
         viewModel.artistsLists.observe(this, Observer {  data ->
-            when(data.status){
+            /*when(data.status){
                 Resource.Status.LOADING -> {
                     Log.e("Resource","LOADING");
                     resource_text_view.text = "LOADING"
@@ -41,11 +41,12 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
                     Log.e("Resource","EMPTY");
                     resource_text_view.text = "EMPTY"
                 }
-            }
+            }*/
         })
-        click_button.setOnClickListener { _ -> viewModel.clicked() }
-        click_button2.setOnClickListener { _ -> viewModel.clicked2() }
-        click_button3.setOnClickListener { _ -> viewModel.clicked3() }
+        //click_button.setOnClickListener { _ -> viewModel.clicked() }
+        //click_button2.setOnClickListener { _ -> viewModel.clicked2() }
+        //click_button3.setOnClickListener { _ -> viewModel.clicked3() }
+        btn_settings.setOnClickListener{ _ -> viewModel.onSettingsButtonClicked() }
     }
 
     override fun setArguments(viewModel: LoginViewModel) {

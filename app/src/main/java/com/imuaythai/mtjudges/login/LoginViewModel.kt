@@ -5,6 +5,7 @@ import com.imuaythai.mtjudges.common.BaseViewModel
 import com.imuaythai.mtjudges.provider.MTWebService
 import com.imuaythai.mtjudges.common.model.Resource
 import com.imuaythai.mtjudges.login.model.LoadArtistsDataUseCase
+import com.imuaythai.mtjudges.navigation.NavigateToSettingsActivityAction
 import com.imuaythai.mtjudges.navigation.NavigateToTimeJudgeFragmentAction
 import javax.inject.Inject
 
@@ -33,5 +34,7 @@ class LoginViewModel @Inject constructor(
     fun setData(artistId: Int) {
 
     }
+
+    fun onSettingsButtonClicked() = navigate(NavigateToSettingsActivityAction())
 
 }

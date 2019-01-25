@@ -3,6 +3,7 @@ package com.imuaythai.mtjudges.application
 import android.app.Application
 import android.content.Context
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
+import com.imuaythai.mtjudges.application.injection.ApplicationModule
 import com.imuaythai.mtjudges.application.injection.DaggerApplicationComponent
 
 class MTJudgesApplication : Application() {
@@ -12,7 +13,9 @@ class MTJudgesApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        applicationComponent = DaggerApplicationComponent.create()
+        applicationComponent = DaggerApplicationComponent.builder()
+            .applicationModule(ApplicationModule(this))
+            .build()
     }
 
     companion object {
