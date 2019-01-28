@@ -20,8 +20,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".login.LoginActivity"
+                  android:windowSoftInputMode="adjustResize"
+                  android:theme="@style/AppTheme"/>
+
         <activity android:name=".main.MainActivity"
-                  android:screenOrientation="landscape"
                   android:windowSoftInputMode="adjustResize"
                   android:theme="@style/AppTheme"/>
 
@@ -29,6 +32,7 @@
                   android:theme="@style/AppTheme"/>
 
         <activity android:name=".change.settings.ChangeSettingsActivity"
+                  android:windowSoftInputMode="adjustResize"
                   android:theme="@style/AppTheme"/>
 
     </application>

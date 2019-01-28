@@ -12,16 +12,19 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:title="@string/settings_change_screen_title"
+            app:navigationIcon="@drawable/ic_close_white"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <EditText
             android:id="@+id/text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="textNoSuggestions|textUri"
             android:hint="[hint]"
             android:textColor="@color/text_color_main"
-            android:textSize="@dimen/text_size_16"/>
+            android:textSize="@dimen/text_size_small_14">
+        <requestFocus />
+    </EditText>
 
     <Space android:layout_width="match_parent"
            android:layout_height="0dp"

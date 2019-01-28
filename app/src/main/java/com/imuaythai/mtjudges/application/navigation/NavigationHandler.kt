@@ -8,4 +8,6 @@ interface NavigationHandler {
 
     fun navigate(action: FinishActivityAction)
 
+    fun navigate(action: RestartApplicationAction)
+
 }

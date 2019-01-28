@@ -32,4 +32,5 @@ class SettingsActivity : BaseActivity<SettingsViewModel>() {
     }
 
     override fun setArguments(viewModel: SettingsViewModel) { }
+
 }

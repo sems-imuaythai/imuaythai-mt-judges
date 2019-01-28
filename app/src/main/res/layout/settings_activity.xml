@@ -14,6 +14,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:title="@string/settings_screen_title"
+            app:navigationIcon="@drawable/ic_close_white"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <ScrollView

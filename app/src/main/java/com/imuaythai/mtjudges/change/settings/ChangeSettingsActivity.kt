@@ -33,6 +33,7 @@ class ChangeSettingsActivity : BaseActivity<ChangeSettingsViewModel>() {
         viewModel.settingsItem.observe(this, Observer { item ->
             toolbar.title = item.name
             text_input.setText(item.value)
+            text_input.setHint(item.settingType.defaultValue)
          })
 
         submit_button.setOnClickListener { viewModel.changeSettingValue(text_input.text.toString()) }

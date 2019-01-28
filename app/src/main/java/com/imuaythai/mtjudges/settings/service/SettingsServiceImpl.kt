@@ -19,9 +19,12 @@ class SettingsServiceImpl @Inject constructor(
     private var sharedPreferences : SharedPreferences
 ): SettingsService {
 
+    private var configurationChanges : MutableLiveData<Int> = MutableLiveData()
+
     private var settingItems : List<MutableLiveData<SettingsItem>> = ArrayList()
 
     init {
+        configurationChanges.value = 1;
         SettingType.values().forEach {
             settingItems += loadStringSettings(it)
         }
@@ -32,13 +35,17 @@ class SettingsServiceImpl @Inject constructor(
     }
 
     override fun saveSettingsItem(settingsItem: SettingsItem) {
-        sharedPreferences.edit().putString(
-            SETTINGS_PREFIX + settingsItem.settingType.name,
-            settingsItem.value
-        ).apply()
         val liveData : MutableLiveData<SettingsItem>? = settingItems
-            .find { mutableLiveData -> mutableLiveData.value!!.settingType == settingsItem.settingType }
-        liveData!!.value = settingsItem;
+            .find { mutableLiveData -> mutableLiveData.value != null && mutableLiveData.value!!.settingType == settingsItem.settingType }
+
+        if(liveData == null || liveData.value!!.value != settingsItem.value) {
+            sharedPreferences.edit().putString(
+                SETTINGS_PREFIX + settingsItem.settingType.name,
+                settingsItem.value
+            ).apply()
+            configurationChanges.value = configurationChanges.value!!.plus(1);
+            liveData!!.value = settingsItem;
+        }
     }
 
     private fun loadStringSettings(settingType: SettingType) : MutableLiveData<SettingsItem> {
@@ -53,5 +60,6 @@ class SettingsServiceImpl @Inject constructor(
         return liveData;
     }
 
+    override fun provideConfigurationChangeObservable(): LiveData<Int> = configurationChanges;
 
 }

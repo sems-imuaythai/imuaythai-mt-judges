@@ -9,10 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.application.MTJudgesApplication
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
-import com.imuaythai.mtjudges.application.navigation.ActivityNavigationAction
-import com.imuaythai.mtjudges.application.navigation.FinishActivityAction
-import com.imuaythai.mtjudges.application.navigation.FragmentNavigateAction
-import com.imuaythai.mtjudges.application.navigation.NavigationHandler
+import com.imuaythai.mtjudges.application.navigation.*
 import javax.inject.Inject
 
 abstract class BaseActivity<VIEW_MODEL:BaseViewModel> : AppCompatActivity(), NavigationHandler {
@@ -50,6 +47,13 @@ abstract class BaseActivity<VIEW_MODEL:BaseViewModel> : AppCompatActivity(), Nav
     }
 
     override fun navigate(action: FinishActivityAction) {
+        finish()
+    }
+
+
+    override fun navigate(action: RestartApplicationAction) {
+        MTJudgesApplication.restartApplication(baseContext)
+        startActivity(action.createIntent(baseContext))
         finish()
     }
 

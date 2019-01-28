@@ -1,19 +1,17 @@
 package com.imuaythai.mtjudges.login
 
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
-import com.imuaythai.mtjudges.common.BaseFragment
+import com.imuaythai.mtjudges.common.BaseActivity
 import com.imuaythai.mtjudges.login.injection.LoginModule
-import com.imuaythai.mtjudges.common.model.Resource
 
-import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.android.synthetic.main.login_activity.*
 
-class LoginFragment : BaseFragment<LoginViewModel>() {
+class LoginActivity : BaseActivity<LoginViewModel>() {
 
-    override fun provideViewLayout(): Int = R.layout.login_fragment
+    override fun provideViewLayout(): Int = R.layout.login_activity
 
     override fun onInjectComponent(component: ApplicationComponent) {
         component.plus(LoginModule()).inject(this)
@@ -47,11 +45,10 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
         //click_button2.setOnClickListener { _ -> viewModel.clicked2() }
         //click_button3.setOnClickListener { _ -> viewModel.clicked3() }
         btn_settings.setOnClickListener{ _ -> viewModel.onSettingsButtonClicked() }
+        viewModel.configurationChange.observe(this, Observer { value -> viewModel.onConfigurationChange(value) })
     }
 
-    override fun setArguments(viewModel: LoginViewModel) {
-        viewModel.setData(arguments!!.getInt("artistId",11));
-    }
+    override fun setArguments(viewModel: LoginViewModel) { }
 
 }
 

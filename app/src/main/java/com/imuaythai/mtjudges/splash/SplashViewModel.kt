@@ -1,13 +1,20 @@
 package com.imuaythai.mtjudges.splash
 
+import android.os.Handler
+import android.os.Looper
 import com.imuaythai.mtjudges.common.BaseViewModel
+import com.imuaythai.mtjudges.navigation.NavigateToLoginActivityAction
 import com.imuaythai.mtjudges.navigation.NavigateToMainActivityAction
 import javax.inject.Inject
 
 class SplashViewModel @Inject constructor() : BaseViewModel() {
 
     init {
-        navigate(NavigateToMainActivityAction())
+        Handler(Looper.getMainLooper())
+            .postDelayed(
+                {  navigate(NavigateToLoginActivityAction()) },
+                1000
+            )
     }
 
 }

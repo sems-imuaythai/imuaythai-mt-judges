@@ -1,18 +1,26 @@
 package com.imuaythai.mtjudges.login
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.imuaythai.mtjudges.application.navigation.RestartApplicationAction
 import com.imuaythai.mtjudges.common.BaseViewModel
 import com.imuaythai.mtjudges.provider.MTWebService
 import com.imuaythai.mtjudges.common.model.Resource
 import com.imuaythai.mtjudges.login.model.LoadArtistsDataUseCase
 import com.imuaythai.mtjudges.navigation.NavigateToSettingsActivityAction
 import com.imuaythai.mtjudges.navigation.NavigateToTimeJudgeFragmentAction
+import com.imuaythai.mtjudges.settings.service.SettingsService
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
     var webService : MTWebService,
+    var settingsService : SettingsService,
     var loadArtistsDataUseCase : LoadArtistsDataUseCase
 ) : BaseViewModel() {
+
+    var configurationChangeId = 0;
+
+    var configurationChange : LiveData<Int> = settingsService.provideConfigurationChangeObservable();
 
     var userName : MutableLiveData<String> = MutableLiveData()
 
@@ -31,10 +39,14 @@ class LoginViewModel @Inject constructor(
         navigate(NavigateToTimeJudgeFragmentAction())
     }
 
-    fun setData(artistId: Int) {
-
-    }
-
     fun onSettingsButtonClicked() = navigate(NavigateToSettingsActivityAction())
+
+    fun onConfigurationChange(value: Int) {
+        if(configurationChangeId != 0 && configurationChangeId != value){
+            navigate(RestartApplicationAction())
+        }else{
+            configurationChangeId = value
+        }
+    }
 
 }

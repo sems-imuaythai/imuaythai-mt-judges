@@ -1,6 +1,7 @@
 package com.imuaythai.mtjudges.settings
 
 import androidx.lifecycle.LiveData
+import com.imuaythai.mtjudges.application.navigation.RestartApplicationAction
 import com.imuaythai.mtjudges.common.BaseViewModel
 import com.imuaythai.mtjudges.navigation.NavigateToChangeSettingsActivityAction
 import com.imuaythai.mtjudges.settings.model.SettingType

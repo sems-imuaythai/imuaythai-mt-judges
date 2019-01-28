@@ -6,6 +6,8 @@ import com.imuaythai.mtjudges.settings.model.SettingsItem
 
 interface SettingsService {
 
+    fun provideConfigurationChangeObservable() : LiveData<Int>
+
     fun provideSettingsItem(settingType: SettingType): LiveData<SettingsItem>
 
     fun saveSettingsItem(settingsItem: SettingsItem)
