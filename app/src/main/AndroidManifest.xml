@@ -25,9 +25,11 @@
                   android:windowSoftInputMode="adjustResize"
                   android:theme="@style/AppTheme"/>
 
+        <activity android:name=".settings.SettingsActivity"
+                  android:theme="@style/AppTheme"/>
 
-        <activity android:name=".settings.SettingsActivity"/>
-
+        <activity android:name=".change.settings.ChangeSettingsActivity"
+                  android:theme="@style/AppTheme"/>
 
     </application>
 

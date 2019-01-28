@@ -13,4 +13,18 @@
     <dimen name="jury_totals_col_width">100dp</dimen>
     <dimen name="jury_totals_cell_height">32dp</dimen>
 
+    <dimen name="margin_normal" >16dp</dimen>
+
+
+    <dimen name="text_size_48">76sp</dimen> <!-- 48pt -->
+    <dimen name="text_size_40">60sp</dimen> <!-- 40pt -->
+    <dimen name="text_size_very_big">39sp</dimen> <!-- 26pt -->
+    <dimen name="text_size_23">36sp</dimen> <!-- 24pt -->
+    <dimen name="text_size_16">24sp</dimen> <!-- 16pt -->
+    <dimen name="text_size_big">20sp</dimen> <!-- 13pt -->
+    <dimen name="text_size_normal">18sp</dimen> <!-- 12pt -->
+    <dimen name="text_size_small">15sp</dimen> <!-- 10pt -->
+    <dimen name="text_size_small_14">14sp</dimen> <!-- 10pt -->
+    <dimen name="text_size_very_small">12sp</dimen> <!-- 8pt -->
+
 </resources>

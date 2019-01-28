@@ -1,5 +1,7 @@
 package com.imuaythai.mtjudges.application.injection
 
+import com.imuaythai.mtjudges.change.settings.injection.ChangeSettingsComponent
+import com.imuaythai.mtjudges.change.settings.injection.ChangeSettingsModule
 import com.imuaythai.mtjudges.login.injection.LoginComponent
 import com.imuaythai.mtjudges.login.injection.LoginModule
 import com.imuaythai.mtjudges.main.MainActivity
@@ -16,11 +18,13 @@ import javax.inject.Singleton
 @Component( modules = [ ApplicationModule::class, MTWebServiceModule::class ] )
 interface ApplicationComponent {
 
-    fun plus( loginModule : LoginModule ) : LoginComponent
+    fun plus( module : LoginModule ) : LoginComponent
 
-    fun plus( timeJudgeModule: TimeJudgeModule ) : TimeJudgeComponent
+    fun plus( module: TimeJudgeModule ) : TimeJudgeComponent
 
-    fun plus( timeJudgeModule: SettingsModule ) : SettingsComponent
+    fun plus( module: SettingsModule ) : SettingsComponent
+
+    fun plus( module: ChangeSettingsModule ) : ChangeSettingsComponent
 
     fun inject(activity: MainActivity)
 

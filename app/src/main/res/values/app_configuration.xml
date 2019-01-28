@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="api_default_host" translatable="false">https://imuaythai-api.herokuapp.com</string>
+
+</resources>

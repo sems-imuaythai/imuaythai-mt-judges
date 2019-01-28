@@ -8,12 +8,12 @@ import com.imuaythai.mtjudges.application.injection.view.model.ViewModelFactory
 import com.imuaythai.mtjudges.application.injection.view.model.ViewModelKey
 import com.imuaythai.mtjudges.application.injection.view.model.EmptyViewModel
 import com.imuaythai.mtjudges.main.MainViewModel
+import com.imuaythai.mtjudges.settings.service.SettingsService
+import com.imuaythai.mtjudges.settings.service.SettingsServiceImpl
 import com.imuaythai.mtjudges.splash.SplashViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
-
-
 
 @Module
 class ApplicationModule constructor(
@@ -41,5 +41,7 @@ class ApplicationModule constructor(
     @Provides
     fun provideSharedPreferences(context: Context) : SharedPreferences = context.getSharedPreferences("com.imuaythai.mtjudges.preferences", 0);
 
+    @Provides
+    fun provideSettingsService(service: SettingsServiceImpl) : SettingsService = service;
 
 }

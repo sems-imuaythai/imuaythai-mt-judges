@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="48dp"
+              android:orientation="vertical" >
+
+    <TextView android:id="@+id/settings_title"
+            style="@style/t_07"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="bottom"
+            android:paddingLeft="@dimen/margin_normal"
+            android:paddingRight="@dimen/margin_normal"
+            tools:text="[settings name]" />
+
+    <TextView android:id="@+id/settings_value"
+            style="@style/t_11_g_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="top"
+            android:paddingLeft="@dimen/margin_normal"
+            android:paddingRight="@dimen/margin_normal"
+            tools:text="[settings value]" />
+
+    <include layout="@layout/form_separator" />
+
+</LinearLayout>

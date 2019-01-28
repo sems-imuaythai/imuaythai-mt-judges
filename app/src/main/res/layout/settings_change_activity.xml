@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title="@string/settings_change_screen_title"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <EditText
+            android:id="@+id/text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="[hint]"
+            android:textColor="@color/text_color_main"
+            android:textSize="@dimen/text_size_16"/>
+
+    <Space android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1"/>
+
+    <Button
+            android:id="@+id/submit_button"
+            android:text="@string/settings_change_submit_label"
+            android:textColor="@color/text_color_main"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+</LinearLayout>

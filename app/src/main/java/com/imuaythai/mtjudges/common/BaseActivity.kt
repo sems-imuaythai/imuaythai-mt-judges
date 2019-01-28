@@ -10,6 +10,7 @@ import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.application.MTJudgesApplication
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
 import com.imuaythai.mtjudges.application.navigation.ActivityNavigationAction
+import com.imuaythai.mtjudges.application.navigation.FinishActivityAction
 import com.imuaythai.mtjudges.application.navigation.FragmentNavigateAction
 import com.imuaythai.mtjudges.application.navigation.NavigationHandler
 import javax.inject.Inject
@@ -46,6 +47,10 @@ abstract class BaseActivity<VIEW_MODEL:BaseViewModel> : AppCompatActivity(), Nav
         if(action.closeParent){
             finish()
         }
+    }
+
+    override fun navigate(action: FinishActivityAction) {
+        finish()
     }
 
     open fun provideFragmentContainer() : Int = 0

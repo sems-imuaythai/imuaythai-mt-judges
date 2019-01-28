@@ -6,4 +6,6 @@ interface NavigationHandler {
 
     fun navigate(action : FragmentNavigateAction)
 
+    fun navigate(action: FinishActivityAction)
+
 }
