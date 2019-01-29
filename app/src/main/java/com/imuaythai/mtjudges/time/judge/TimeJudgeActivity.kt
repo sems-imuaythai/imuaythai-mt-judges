@@ -4,9 +4,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
 import com.imuaythai.mtjudges.common.BaseFragment
 import com.imuaythai.mtjudges.R
+import com.imuaythai.mtjudges.common.BaseActivity
 import com.imuaythai.mtjudges.time.judge.injection.TimeJudgeModule
 
-class TimeJudgeFragment : BaseFragment<TimeJudgeViewModel>() {
+class TimeJudgeActivity : BaseActivity<TimeJudgeViewModel>() {
 
     override fun provideViewLayout(): Int = R.layout.time_judge_fragment
 
@@ -18,7 +19,4 @@ class TimeJudgeFragment : BaseFragment<TimeJudgeViewModel>() {
 
     }
 
-    override fun setArguments(viewModel: TimeJudgeViewModel) {
-
-    }
 }

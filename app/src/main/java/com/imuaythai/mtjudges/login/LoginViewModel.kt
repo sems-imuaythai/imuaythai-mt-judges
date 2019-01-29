@@ -8,8 +8,9 @@ import com.imuaythai.mtjudges.login.exception.LoginErrorResolver
 import com.imuaythai.mtjudges.login.model.LoginData
 import com.imuaythai.mtjudges.login.service.LoginService
 import com.imuaythai.mtjudges.login.validation.LoginFormValidator
+import com.imuaythai.mtjudges.navigation.NavigateToPointJudgeActivityAction
 import com.imuaythai.mtjudges.navigation.NavigateToSettingsActivityAction
-import com.imuaythai.mtjudges.navigation.NavigateToTimeJudgeFragmentAction
+import com.imuaythai.mtjudges.navigation.NavigateToTimeJudgeActivityAction
 import com.imuaythai.mtjudges.settings.service.SettingsService
 import io.reactivex.functions.Consumer
 import javax.inject.Inject
@@ -35,11 +36,12 @@ class LoginViewModel @Inject constructor(
     }
 
     fun onLoginButtonClicked(email: String, password: String) {
+
         val loginData = LoginData(email,password)
         loginFormValidator.validate(loginData)
         if(loginFormValidator.isValid) {
             execute(loginService.login(loginData), Consumer {
-                navigate(NavigateToTimeJudgeFragmentAction())
+                navigate(NavigateToPointJudgeActivityAction())
             }, loginErrorResolver)
         }
     }
