@@ -1,4 +1,4 @@
-package com.imuaythai.mtjudges.settings.view
+package com.imuaythai.mtjudges.ui
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,7 +7,6 @@ import android.widget.FrameLayout
 import android.widget.TextView
 
 import com.imuaythai.mtjudges.R
-import com.imuaythai.mtjudges.settings.model.SettingsItem
 
 class SettingsItemView : FrameLayout{
     constructor(context: Context) : super(context){ initialize(null); }
@@ -38,11 +37,6 @@ class SettingsItemView : FrameLayout{
 
     fun setValue(value: String) {
         valueTextView.text = value
-    }
-
-    fun display(settingsItem: SettingsItem){
-        setTitle(settingsItem.name)
-        setValue(settingsItem.value)
     }
 
 }

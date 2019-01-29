@@ -31,6 +31,4 @@ class SettingsActivity : BaseActivity<SettingsViewModel>() {
         viewModel.apiHostSettingsItem.observe(this, Observer { settingItem -> settings_item_api_host.setValue(settingItem.value) })
     }
 
-    override fun setArguments(viewModel: SettingsViewModel) { }
-
 }

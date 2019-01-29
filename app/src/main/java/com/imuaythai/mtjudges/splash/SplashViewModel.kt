@@ -13,7 +13,7 @@ class SplashViewModel @Inject constructor() : BaseViewModel() {
         Handler(Looper.getMainLooper())
             .postDelayed(
                 {  navigate(NavigateToLoginActivityAction()) },
-                1000
+                1200
             )
     }
 

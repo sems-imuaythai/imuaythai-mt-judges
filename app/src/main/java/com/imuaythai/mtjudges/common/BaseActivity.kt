@@ -1,15 +1,18 @@
 package com.imuaythai.mtjudges.common
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
 import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.application.MTJudgesApplication
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
 import com.imuaythai.mtjudges.application.navigation.*
+import com.imuaythai.mtjudges.common.model.ErrorData
 import javax.inject.Inject
 
 abstract class BaseActivity<VIEW_MODEL:BaseViewModel> : AppCompatActivity(), NavigationHandler {
@@ -20,7 +23,7 @@ abstract class BaseActivity<VIEW_MODEL:BaseViewModel> : AppCompatActivity(), Nav
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(provideViewLayout())
+        onInitializeDataBinding(provideViewLayout())
         onInjectComponent(MTJudgesApplication.get(this).applicationComponent)
         viewModel = provideViewModel(ViewModelProviders.of(this, viewModelFactory))
         viewModel.fragmentNavigateAction.observe(this, Observer { action -> action.visit(this) })
@@ -57,6 +60,25 @@ abstract class BaseActivity<VIEW_MODEL:BaseViewModel> : AppCompatActivity(), Nav
         finish()
     }
 
+    open fun onInitializeDataBinding(int: Int){
+        setContentView(int)
+    }
+
+    fun displaySnackBarError(errorData: ErrorData?) {
+        if(errorData!=null) {
+            val viewGroup : ViewGroup? = findViewById(R.id.content_layout)
+            if(viewGroup != null){
+                val snackbar = Snackbar.make(
+                    viewGroup,
+                    errorData.message,
+                    Snackbar.LENGTH_LONG
+                )
+                snackbar.setAction(errorData.actionName, {})
+                snackbar.show()
+            }
+        }
+    }
+
     open fun provideFragmentContainer() : Int = 0
 
     abstract fun provideViewLayout() : Int
@@ -67,6 +89,6 @@ abstract class BaseActivity<VIEW_MODEL:BaseViewModel> : AppCompatActivity(), Nav
 
     abstract fun onBindView(viewModel : VIEW_MODEL)
 
-    abstract fun setArguments(viewModel : VIEW_MODEL)
+    fun setArguments(viewModel : VIEW_MODEL){}
 
 }

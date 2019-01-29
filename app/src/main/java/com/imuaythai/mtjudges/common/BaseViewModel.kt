@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.imuaythai.mtjudges.application.navigation.FragmentNavigateAction
 import com.imuaythai.mtjudges.application.navigation.NavigateAction
+import com.imuaythai.mtjudges.common.model.ErrorData
+import com.imuaythai.mtjudges.common.model.ErrorResolver
 import com.imuaythai.mtjudges.common.model.Resource
 import com.imuaythai.mtjudges.common.model.UseCase
 import io.reactivex.Observable
@@ -17,15 +19,22 @@ open class BaseViewModel : ViewModel() {
 
     val fragmentNavigateAction : MutableLiveData<NavigateAction> = MutableLiveData()
 
+    val displayProgressLoaderAction : MutableLiveData<Boolean> = MutableLiveData()
+
+    val errorDisplayLiveData : MutableLiveData<ErrorData> = MutableLiveData()
+
     private val disposables = CompositeDisposable()
 
     fun <REQUEST,RESPONSE> execute(useCase: UseCase<REQUEST, RESPONSE>, request : REQUEST, onSuccess : Consumer<in RESPONSE>, onError : Consumer<in Throwable> ){
+        displayProgress()
         disposables.add(Observable.create(ObservableOnSubscribe<RESPONSE> { subscriber ->
             try {
                 subscriber.onNext(useCase.execute(request))
                 subscriber.onComplete()
+                hideProgress()
             }catch (throwable : Throwable){
                 subscriber.onError(throwable)
+                hideProgress()
             }
         })
         .observeOn(AndroidSchedulers.mainThread())
@@ -34,10 +43,31 @@ open class BaseViewModel : ViewModel() {
     }
 
     fun <RESPONSE> execute( observable : Observable<RESPONSE>, onSuccess : Consumer<in RESPONSE>, onError : Consumer<in Throwable> ){
+        displayProgress()
         disposables.add(observable
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.newThread())
-            .subscribe(onSuccess, onError))
+            .subscribe({
+                onSuccess.accept(it)
+                hideProgress()
+            }, {
+                onError.accept(it)
+                hideProgress()
+            }))
+    }
+
+    fun <RESPONSE> execute( observable : Observable<RESPONSE>, onSuccess : Consumer<in RESPONSE>, resolver: ErrorResolver ){
+        displayProgress()
+        disposables.add(observable
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.newThread())
+            .subscribe({
+                onSuccess.accept(it)
+                hideProgress()
+            }, {
+                displayError(resolver.resolveError(it))
+                hideProgress()
+            }))
     }
 
     fun <REQUEST,RESPONSE> execute(useCase: UseCase<REQUEST, RESPONSE>, request : REQUEST, liveData: MutableLiveData<Resource<RESPONSE>> ){
@@ -64,6 +94,18 @@ open class BaseViewModel : ViewModel() {
 
     fun navigate(actionFragment : NavigateAction){
         fragmentNavigateAction.value = actionFragment
+    }
+
+    fun displayProgress() {
+        displayProgressLoaderAction.value = true
+    }
+
+    fun hideProgress() {
+        displayProgressLoaderAction.value = false
+    }
+
+    fun displayError(errorData: ErrorData){
+        errorDisplayLiveData.value = errorData
     }
 
 }

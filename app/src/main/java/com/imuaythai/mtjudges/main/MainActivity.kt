@@ -19,5 +19,4 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun onBindView(viewModel: MainViewModel) { }
 
-    override fun setArguments(viewModel: MainViewModel) { }
 }

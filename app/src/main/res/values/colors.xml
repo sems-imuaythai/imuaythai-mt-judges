@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@color/button_blue_light</color>
+    <color name="colorPrimaryDark">@color/blue_dark</color>
+    <color name="colorAccent">@color/button_blue_light</color>
 
     <color name="black_overlay">#66000000</color>
 
@@ -13,6 +13,10 @@
     <color name="blue">#2196F3</color>
     <color name="blue_light">#90CAF9</color>
     <color name="green_light">#81C784</color>
+    <color name="blue_dark">#24529F</color>
+
+    <color name="button_blue_light">#2196F3</color>
+    <color name="button_blue_dark">#1687df</color>
 
     <color name="font_lighten">#FAFAFA</color>
     <color name="font_dark">#212121</color>
@@ -29,5 +33,7 @@
     <color name="text_color_label">#767676</color>
     <color name="text_color_hint">#d4d4d4</color>
     <color name="text_color_no_label_hint">#C7C7C7</color>
+
+    <color name="light_grey">#e9e9e9</color>
 
 </resources>

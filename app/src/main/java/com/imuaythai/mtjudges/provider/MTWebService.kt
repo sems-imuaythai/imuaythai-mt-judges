@@ -1,12 +1,12 @@
 package com.imuaythai.mtjudges.provider
 
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface MTWebService {
 
-    @GET("/2.0/?method=artist.search")
-    fun searchArtist(@Query("artist") artist: String): Observable<String>
+    @POST("/api/account/login")
+    @Headers("Content-Type: application/json")
+    fun login(@Body params: HashMap<String, String>): Observable<String>
 
 }

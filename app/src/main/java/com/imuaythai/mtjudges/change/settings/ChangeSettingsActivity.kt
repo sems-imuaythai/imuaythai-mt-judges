@@ -35,9 +35,7 @@ class ChangeSettingsActivity : BaseActivity<ChangeSettingsViewModel>() {
             text_input.setText(item.value)
             text_input.setHint(item.settingType.defaultValue)
          })
-
+        viewModel.settingValueError.observe(this, Observer { text_input.error = it })
         submit_button.setOnClickListener { viewModel.changeSettingValue(text_input.text.toString()) }
     }
-
-    override fun setArguments(viewModel: ChangeSettingsViewModel) { }
 }

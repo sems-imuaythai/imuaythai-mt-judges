@@ -42,7 +42,7 @@ class ApplicationModule constructor(
     @ViewModelKey(SplashViewModel::class)
     fun provideSplashViewModel(splashViewModel : SplashViewModel): ViewModel = splashViewModel
 
-    @Provides
+    @Provides @Singleton
     fun provideSharedPreferences(context: Context) : SharedPreferences = context.getSharedPreferences("com.imuaythai.mtjudges.preferences", 0);
 
     @Provides @Singleton

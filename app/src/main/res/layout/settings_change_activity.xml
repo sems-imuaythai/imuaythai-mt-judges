@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
@@ -17,25 +18,25 @@
 
     <EditText
             android:id="@+id/text_input"
+            style="@style/form_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textNoSuggestions|textUri"
             android:hint="[hint]"
-            android:textColor="@color/text_color_main"
-            android:textSize="@dimen/text_size_small_14">
+            android:textSize="@dimen/text_size_normal">
         <requestFocus />
+
     </EditText>
 
     <Space android:layout_width="match_parent"
            android:layout_height="0dp"
            android:layout_weight="1"/>
 
-    <Button
+    <com.imuaythai.mtjudges.ui.SubmitButton
             android:id="@+id/submit_button"
-            android:text="@string/settings_change_submit_label"
-            android:textColor="@color/text_color_main"
-            android:layout_gravity="bottom"
+            style="@style/button_login"
+            app:text="@string/settings_change_submit_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="48dp" />
 
 </LinearLayout>

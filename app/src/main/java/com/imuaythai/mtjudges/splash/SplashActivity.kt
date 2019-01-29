@@ -16,6 +16,4 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
     override fun provideViewModel(provider: ViewModelProvider): SplashViewModel = provider.get(SplashViewModel::class.java)
 
     override fun onBindView(viewModel: SplashViewModel) { }
-
-    override fun setArguments(viewModel: SplashViewModel) { }
 }

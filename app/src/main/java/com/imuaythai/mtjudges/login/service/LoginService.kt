@@ -1,7 +1,10 @@
 package com.imuaythai.mtjudges.login.service
 
+import com.imuaythai.mtjudges.login.model.LoginData
+import io.reactivex.Observable
+
 interface LoginService {
 
-    fun login( name : String , password : String ) : String
+    fun login( loginData: LoginData ) : Observable<String>
 
 }
