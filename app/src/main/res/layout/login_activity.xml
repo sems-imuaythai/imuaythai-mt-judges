@@ -23,7 +23,8 @@
                         style="@style/form_edit_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:imeOptions="actionNext|actionGo"
                         android:hint="@string/hint_email" />
 
                 <EditText

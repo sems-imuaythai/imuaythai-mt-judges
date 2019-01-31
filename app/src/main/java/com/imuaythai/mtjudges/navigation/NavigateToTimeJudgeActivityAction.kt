@@ -8,7 +8,7 @@ import com.imuaythai.mtjudges.application.navigation.ActivityNavigationAction
 import com.imuaythai.mtjudges.application.navigation.FragmentNavigateAction
 import com.imuaythai.mtjudges.time.judge.TimeJudgeActivity
 
-class NavigateToTimeJudgeActivityAction constructor() : ActivityNavigationAction(closeParent = true) {
+class NavigateToTimeJudgeActivityAction constructor() : ActivityNavigationAction(closeParent = false) {
 
     override fun createIntent(context: Context): Intent = Intent(context,TimeJudgeActivity::class.java)
 }

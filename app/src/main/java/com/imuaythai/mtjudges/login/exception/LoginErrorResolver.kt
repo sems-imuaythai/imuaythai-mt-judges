@@ -15,7 +15,11 @@ class LoginErrorResolver @Inject constructor(
 
     override fun resolveError(throwable: Throwable): ErrorData {
         if (throwable is RetrofitException){
-            return ErrorData(throwable.getErrorBodyAs(ErrorResponse::class.java).Message)
+            val response : ErrorResponse? = throwable.getErrorBodyAs(ErrorResponse::class.java)
+            return if(response!=null)
+                ErrorData(response.Message)
+            else
+                ErrorData(throwable.message ?: context.getString(R.string.error_generic_message))
         }else if(throwable is IOException){
             return ErrorData(context.getString(R.string.error_generic_message))
         }else{

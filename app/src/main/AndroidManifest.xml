@@ -35,12 +35,20 @@
                   android:windowSoftInputMode="adjustResize"
                   android:theme="@style/AppTheme"/>
 
+        <activity android:name=".test.TestActivity"
+                  android:theme="@style/AppTheme"/>
+
         <activity android:name=".time.judge.TimeJudgeActivity"
                   android:screenOrientation="landscape"
                   android:windowSoftInputMode="adjustResize"
                   android:theme="@style/AppTheme"/>
 
         <activity android:name=".point.judge.PointJudgeActivity"
+                  android:screenOrientation="landscape"
+                  android:windowSoftInputMode="adjustResize"
+                  android:theme="@style/AppTheme"/>
+
+        <activity android:name=".jury.judge.JuryJudgeActivity"
                   android:screenOrientation="landscape"
                   android:windowSoftInputMode="adjustResize"
                   android:theme="@style/AppTheme"/>

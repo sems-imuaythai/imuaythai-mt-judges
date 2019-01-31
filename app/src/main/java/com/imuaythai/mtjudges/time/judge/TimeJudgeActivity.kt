@@ -15,8 +15,6 @@ class TimeJudgeActivity : BaseActivity<TimeJudgeViewModel>() {
 
     override fun provideViewModel(provider: ViewModelProvider): TimeJudgeViewModel = provider.get(TimeJudgeViewModel::class.java)
 
-    override fun onBindView(viewModel: TimeJudgeViewModel) {
-
-    }
+    override fun onBindView(viewModel: TimeJudgeViewModel) { }
 
 }

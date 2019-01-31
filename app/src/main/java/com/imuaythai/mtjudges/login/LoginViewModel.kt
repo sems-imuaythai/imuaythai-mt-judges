@@ -10,6 +10,7 @@ import com.imuaythai.mtjudges.login.service.LoginService
 import com.imuaythai.mtjudges.login.validation.LoginFormValidator
 import com.imuaythai.mtjudges.navigation.NavigateToPointJudgeActivityAction
 import com.imuaythai.mtjudges.navigation.NavigateToSettingsActivityAction
+import com.imuaythai.mtjudges.navigation.NavigateToTestActivityAction
 import com.imuaythai.mtjudges.navigation.NavigateToTimeJudgeActivityAction
 import com.imuaythai.mtjudges.settings.service.SettingsService
 import io.reactivex.functions.Consumer
@@ -41,7 +42,7 @@ class LoginViewModel @Inject constructor(
         loginFormValidator.validate(loginData)
         if(loginFormValidator.isValid) {
             execute(loginService.login(loginData), Consumer {
-                navigate(NavigateToPointJudgeActivityAction())
+                navigate(NavigateToTestActivityAction())
             }, loginErrorResolver)
         }
     }
