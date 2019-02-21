@@ -1,6 +1,5 @@
 package com.imuaythai.mtjudges.settings
 
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
@@ -28,7 +27,10 @@ class SettingsActivity : BaseActivity<SettingsViewModel>() {
         toolbar.setNavigationOnClickListener{ _ -> finish() }
 
         settings_item_api_host.setOnClickListener{ _ -> viewModel.clickedSettingsItem(SettingType.API_HOST) }
+        settings_item_selected_ring.setOnClickListener{ _ -> viewModel.clickedSettingsItem(SettingType.SELECTED_RING) }
         viewModel.apiHostSettingsItem.observe(this, Observer { settingItem -> settings_item_api_host.setValue(settingItem.value) })
+        viewModel.selectedRingSettingsItem.observe(this, Observer { settingItem -> settings_item_selected_ring.setValue(settingItem.value) })
+
     }
 
 }

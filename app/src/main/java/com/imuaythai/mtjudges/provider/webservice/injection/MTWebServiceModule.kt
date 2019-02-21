@@ -1,8 +1,8 @@
-package com.imuaythai.mtjudges.provider.injection
+package com.imuaythai.mtjudges.provider.webservice.injection
 
 import com.imuaythai.mtjudges.BuildConfig
 import com.imuaythai.mtjudges.common.rx.RxErrorHandlingCallAdapterFactory
-import com.imuaythai.mtjudges.provider.MTWebService
+import com.imuaythai.mtjudges.provider.webservice.WebService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -31,6 +31,7 @@ class MTWebServiceModule {
             .build()
 
     @Provides @Singleton
-    fun provideMTWebService(retrofit : Retrofit) : MTWebService = retrofit.create(MTWebService::class.java)
+    fun provideMTWebService(retrofit : Retrofit) : WebService = retrofit.create(
+        WebService::class.java)
 
 }

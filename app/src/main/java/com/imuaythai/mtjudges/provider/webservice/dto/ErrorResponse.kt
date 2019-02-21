@@ -1,4 +1,4 @@
-package com.imuaythai.mtjudges.provider.dto
+package com.imuaythai.mtjudges.provider.webservice.dto
 
 class ErrorResponse {
 

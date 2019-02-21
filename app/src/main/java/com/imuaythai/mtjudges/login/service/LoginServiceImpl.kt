@@ -1,14 +1,14 @@
 package com.imuaythai.mtjudges.login.service
 
 import com.imuaythai.mtjudges.login.model.LoginData
-import com.imuaythai.mtjudges.provider.MTWebService
-import com.imuaythai.mtjudges.provider.dto.LoginResponse
+import com.imuaythai.mtjudges.provider.webservice.WebService
+import com.imuaythai.mtjudges.provider.webservice.dto.LoginResponse
 import io.reactivex.Observable
 import javax.inject.Inject
 
 
 class LoginServiceImpl @Inject constructor(
-    var mtWebService: MTWebService
+    var mtWebService: WebService
 ): LoginService {
 
     override fun login(loginData: LoginData) : Observable<LoginResponse> {

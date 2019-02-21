@@ -8,6 +8,10 @@ import com.imuaythai.mtjudges.common.BaseActivity
 import com.imuaythai.mtjudges.login.injection.LoginModule
 
 import kotlinx.android.synthetic.main.login_activity.*
+import android.widget.ArrayAdapter
+import com.imuaythai.mtjudges.provider.hubservice.dto.Ring
+import com.imuaythai.mtjudges.provider.hubservice.dto.UserRole
+
 
 class LoginActivity : BaseActivity<LoginViewModel>() {
 
@@ -18,6 +22,7 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
     override fun provideViewModel(provider: ViewModelProvider): LoginViewModel = provider.get(LoginViewModel::class.java)
 
     override fun onBindView(viewModel: LoginViewModel) {
+
         btn_settings.setOnClickListener{ _ -> viewModel.onSettingsButtonClicked() }
         submit_button.setOnClickListener { _ -> viewModel.onLoginButtonClicked(
             login_input.text.toString(),
@@ -33,6 +38,7 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
         })
         viewModel.errorDisplayLiveData.observe(this,  Observer { throwable -> displaySnackBarError(throwable)})
         viewModel.configurationChange.observe(this, Observer { value -> viewModel.onConfigurationChange(value) })
+        viewModel.ringType.observe(this, Observer { value -> ring_text_view.text = value })
     }
 
 }

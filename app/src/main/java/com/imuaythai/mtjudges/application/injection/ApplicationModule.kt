@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.application.injection.view.model.ViewModelFactory
 import com.imuaythai.mtjudges.application.injection.view.model.ViewModelKey
 import com.imuaythai.mtjudges.application.injection.view.model.EmptyViewModel
+import com.imuaythai.mtjudges.login.service.UserService
+import com.imuaythai.mtjudges.login.service.UserServiceImpl
 import com.imuaythai.mtjudges.main.MainViewModel
 import com.imuaythai.mtjudges.settings.model.SettingType
 import com.imuaythai.mtjudges.settings.service.SettingsService
@@ -51,10 +53,17 @@ class ApplicationModule constructor(
     fun provideSharedPreferences(context: Context) : SharedPreferences = context.getSharedPreferences("com.imuaythai.mtjudges.preferences", 0);
 
     @Provides @Singleton
-    fun provideSettingsService(service: SettingsServiceImpl) : SettingsService = service;
+    fun provideSettingsService(service: SettingsServiceImpl) : SettingsService = service
+
+    @Provides @Singleton
+    fun provideUserService(service : UserServiceImpl) : UserService = service
 
     @Provides @Named("API_HOST")
     fun provideConfigurationApiHost(settingsService: SettingsService) : String
             = settingsService.provideSettingsItem(SettingType.API_HOST).value!!.value
+
+    @Provides @Named("SELECTED_RING")
+    fun provideConfigurationSelectedRing(settingsService: SettingsService) : String
+            = settingsService.provideSettingsItem(SettingType.SELECTED_RING).value!!.value
 
 }

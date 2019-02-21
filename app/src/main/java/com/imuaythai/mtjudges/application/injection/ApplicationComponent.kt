@@ -9,7 +9,8 @@ import com.imuaythai.mtjudges.login.injection.LoginModule
 import com.imuaythai.mtjudges.main.MainActivity
 import com.imuaythai.mtjudges.point.judge.injection.PointJudgeComponent
 import com.imuaythai.mtjudges.point.judge.injection.PointJudgeModule
-import com.imuaythai.mtjudges.provider.injection.MTWebServiceModule
+import com.imuaythai.mtjudges.provider.hubservice.injection.HubConnectionModule
+import com.imuaythai.mtjudges.provider.webservice.injection.MTWebServiceModule
 import com.imuaythai.mtjudges.settings.injection.SettingsComponent
 import com.imuaythai.mtjudges.settings.injection.SettingsModule
 import com.imuaythai.mtjudges.splash.SplashActivity
@@ -32,6 +33,8 @@ interface ApplicationComponent {
     fun plus( module: ChangeSettingsModule ) : ChangeSettingsComponent
 
     fun plus(module: PointJudgeModule): PointJudgeComponent
+
+    fun plus( module : HubConnectionModule ) : HubConnectionComponent
 
     fun inject(activity: MainActivity)
 

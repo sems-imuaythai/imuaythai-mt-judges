@@ -47,9 +47,12 @@
     <string name="start">START</string>
     <string name="break_">BREAK</string>
 
+    <string name="settings_selected_ring_option_label">Ring %1$s</string>
+
     <string name="settings_change_screen_title">Change settings</string>
     <string name="settings_screen_title">Settings</string>
     <string name="settings_item_title_api_host">Api host</string>
+    <string name="settings_item_title_selected_ring">Selected ring</string>
 
     <string name="settings_change_submit_label">Submit</string>
 

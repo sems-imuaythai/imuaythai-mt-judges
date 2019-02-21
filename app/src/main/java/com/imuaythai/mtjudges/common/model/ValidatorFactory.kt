@@ -4,6 +4,6 @@ import android.content.Context
 
 interface ValidatorFactory{
 
-    fun create(context: Context) : Validator<String>
+    fun createValidator(context: Context) : Validator<String>
 
 }

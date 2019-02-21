@@ -7,25 +7,33 @@ import com.imuaythai.mtjudges.common.BaseViewModel
 import com.imuaythai.mtjudges.login.exception.LoginErrorResolver
 import com.imuaythai.mtjudges.login.model.LoginData
 import com.imuaythai.mtjudges.login.service.LoginService
+import com.imuaythai.mtjudges.login.service.UserService
 import com.imuaythai.mtjudges.login.validation.LoginFormValidator
-import com.imuaythai.mtjudges.navigation.NavigateToPointJudgeActivityAction
+import com.imuaythai.mtjudges.navigation.NavigateToConnectActivityAction
 import com.imuaythai.mtjudges.navigation.NavigateToSettingsActivityAction
 import com.imuaythai.mtjudges.navigation.NavigateToTestActivityAction
-import com.imuaythai.mtjudges.navigation.NavigateToTimeJudgeActivityAction
+import com.imuaythai.mtjudges.provider.hubservice.dto.Ring
+import com.imuaythai.mtjudges.provider.webservice.dto.UserData
+import com.imuaythai.mtjudges.settings.model.SettingType
+import com.imuaythai.mtjudges.settings.model.SettingsItem
 import com.imuaythai.mtjudges.settings.service.SettingsService
 import io.reactivex.functions.Consumer
 import javax.inject.Inject
+
 
 class LoginViewModel @Inject constructor(
     private val loginService: LoginService,
     private val settingsService : SettingsService,
     private val loginErrorResolver: LoginErrorResolver,
-    private val loginFormValidator: LoginFormValidator
+    private val loginFormValidator: LoginFormValidator,
+    private val userService: UserService
 ) : BaseViewModel() {
 
     private var configurationChangeId = 0
 
     val configurationChange : LiveData<Int> = settingsService.provideConfigurationChangeObservable()
+
+    val ringType : MutableLiveData<String> = MutableLiveData()
 
     val loginError : MutableLiveData<String> = MutableLiveData()
 
@@ -34,6 +42,10 @@ class LoginViewModel @Inject constructor(
     init {
         loginFormValidator.passwordError = passwordError
         loginFormValidator.loginError = loginError
+
+        settingsService.provideSettingsItem(SettingType.SELECTED_RING).observeForever {
+            ringType.value = it.value.capitalize()
+        }
     }
 
     fun onLoginButtonClicked(email: String, password: String) {
@@ -42,7 +54,12 @@ class LoginViewModel @Inject constructor(
         loginFormValidator.validate(loginData)
         if(loginFormValidator.isValid) {
             execute(loginService.login(loginData), Consumer {
-                navigate(NavigateToTestActivityAction())
+                val userData : UserData? = it.user
+                if(userData != null) {
+                    userService.setUserData(userData)
+                    val ring: Ring = Ring.valueOf(ringType.value ?: "A")
+                    navigate(NavigateToConnectActivityAction(ring))
+                }
             }, loginErrorResolver)
         }
     }
@@ -50,9 +67,9 @@ class LoginViewModel @Inject constructor(
     fun onSettingsButtonClicked() = navigate(NavigateToSettingsActivityAction())
 
     fun onConfigurationChange(value: Int) {
-        if(configurationChangeId != 0 && configurationChangeId != value){
+        if (configurationChangeId != 0 && configurationChangeId != value) {
             navigate(RestartApplicationAction())
-        }else{
+        } else {
             configurationChangeId = value
         }
     }

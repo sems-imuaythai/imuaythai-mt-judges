@@ -1,10 +1,10 @@
-package com.imuaythai.mtjudges.provider
+package com.imuaythai.mtjudges.provider.webservice
 
-import com.imuaythai.mtjudges.provider.dto.LoginResponse
+import com.imuaythai.mtjudges.provider.webservice.dto.LoginResponse
 import io.reactivex.Observable
 import retrofit2.http.*
 
-interface MTWebService {
+interface WebService {
 
     @POST("/api/account/login")
     @Headers("Content-Type: application/json")

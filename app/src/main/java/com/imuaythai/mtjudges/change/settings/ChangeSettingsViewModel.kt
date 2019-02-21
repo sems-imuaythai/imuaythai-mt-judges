@@ -4,27 +4,29 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.imuaythai.mtjudges.application.navigation.FinishActivityAction
+import com.imuaythai.mtjudges.change.settings.model.SettingsListItem
 import com.imuaythai.mtjudges.common.BaseViewModel
 import com.imuaythai.mtjudges.settings.model.SettingType
 import com.imuaythai.mtjudges.settings.model.SettingsItem
 import com.imuaythai.mtjudges.settings.service.SettingsService
+import java.io.Serializable
 import javax.inject.Inject
 
 class ChangeSettingsViewModel @Inject constructor(
-    var settingsService : SettingsService,
-    var settingType: SettingType,
-    var context: Context
+    val settingsService : SettingsService,
+    val settingType: SettingType,
+    val context: Context
 ) : BaseViewModel(){
 
-    var settingsItem : LiveData<SettingsItem> = settingsService.provideSettingsItem(settingType);
+    val settingsItem : LiveData<SettingsItem> = settingsService.provideSettingsItem(settingType);
 
-    var settingValueError : MutableLiveData<String> = MutableLiveData()
+    val settingValueError : MutableLiveData<String> = MutableLiveData()
 
-    fun changeSettingValue(text: String){
+    fun saveSettingValue(text: String){
         if(text.isEmpty()){
             requestSaveSetting(settingsItem.value!!.edit(context.getString(settingType.defaultValue)))
         }else{
-            settingValueError.value = settingType.create(context).validate(text)
+            settingValueError.value = settingType.createValidator(context).validate(text)
             if(settingValueError.value == null) {
                 requestSaveSetting(settingsItem.value!!.edit(text))
             }
@@ -35,4 +37,7 @@ class ChangeSettingsViewModel @Inject constructor(
         settingsService.saveSettingsItem(settingsItem)
         navigate(FinishActivityAction())
     }
+
+    fun saveSettingOption(value: String) = requestSaveSetting(settingsItem.value!!.edit(value))
+
 }

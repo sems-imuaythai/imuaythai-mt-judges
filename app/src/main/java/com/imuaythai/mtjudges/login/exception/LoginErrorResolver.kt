@@ -5,7 +5,7 @@ import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.common.model.ErrorData
 import com.imuaythai.mtjudges.common.model.ErrorResolver
 import com.imuaythai.mtjudges.common.rx.RetrofitException
-import com.imuaythai.mtjudges.provider.dto.ErrorResponse
+import com.imuaythai.mtjudges.provider.webservice.dto.ErrorResponse
 import java.io.IOException
 import javax.inject.Inject
 
