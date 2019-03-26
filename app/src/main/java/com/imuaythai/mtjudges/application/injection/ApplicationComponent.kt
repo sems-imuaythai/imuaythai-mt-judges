@@ -21,7 +21,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component( modules = [ ApplicationModule::class, MTWebServiceModule::class ] )
+@Component( modules = [ ApplicationModule::class, MTWebServiceModule::class, HubConnectionModule::class ] )
 interface ApplicationComponent {
 
     fun plus( module : LoginModule ) : LoginComponent
@@ -33,8 +33,6 @@ interface ApplicationComponent {
     fun plus( module: ChangeSettingsModule ) : ChangeSettingsComponent
 
     fun plus(module: PointJudgeModule): PointJudgeComponent
-
-    fun plus( module : HubConnectionModule ) : HubConnectionComponent
 
     fun inject(activity: MainActivity)
 

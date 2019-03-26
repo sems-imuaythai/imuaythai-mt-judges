@@ -1,13 +1,10 @@
 package com.imuaythai.mtjudges.provider.hubservice
 
-import com.imuaythai.mtjudges.provider.hubservice.service.HubConnectionService
-import com.imuaythai.mtjudges.provider.hubservice.service.HubMainJudgeService
-import com.imuaythai.mtjudges.provider.hubservice.service.HubPointJudgeService
-import com.imuaythai.mtjudges.provider.hubservice.service.HubTimeKeeperService
+import androidx.lifecycle.LiveData
+import com.imuaythai.mtjudges.provider.hubservice.dto.ConnectionState
 
-interface HubService :
-    HubConnectionService,
-    HubTimeKeeperService,
-    HubPointJudgeService,
-    HubMainJudgeService {
+interface HubService {
+
+    fun connect(): LiveData<ConnectionState>
+
 }

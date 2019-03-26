@@ -12,6 +12,8 @@
                 android:layout_height="match_parent">
 
             <LinearLayout
+                    android:id="@+id/login_form"
+                    android:visibility="gone"
                     android:orientation="vertical"
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
@@ -46,6 +48,66 @@
                         app:text="@string/action_login"
                         android:layout_width="match_parent"
                         android:layout_height="48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/disconnected_view"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"
+                    android:layout_centerHorizontal="true">
+
+                <ImageView
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_connection_lost"  />
+
+                <TextView
+                        android:layout_marginTop="4dp"
+                        android:id="@+id/connection_lost_title_label"
+                        style="@style/label_header_text"
+                        android:text="[message]"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                <TextView
+                        android:layout_marginTop="4dp"
+                        android:id="@+id/connection_lost_message_label"
+                        style="@style/label_small_text"
+                        android:text="[touch to reconnect]"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/progress_view"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true">
+
+                <ProgressBar
+                        android:id="@+id/progress_bar"
+                        style="?android:attr/progressBarStyleLarge"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:layout_centerInParent="true" />
+
+                <TextView
+                        android:layout_marginTop="4dp"
+                        android:id="@+id/progress_message_label"
+                        style="@style/label_small_text"
+                        android:text="[connecting]"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
             </LinearLayout>
 
