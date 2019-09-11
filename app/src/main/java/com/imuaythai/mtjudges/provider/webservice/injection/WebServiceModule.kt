@@ -6,6 +6,7 @@ import com.imuaythai.mtjudges.provider.webservice.interceptor.RequestInterceptor
 import com.imuaythai.mtjudges.service.MTService
 import dagger.Module
 import dagger.Provides
+import okhttp3.ConnectionSpec
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,6 +25,7 @@ class WebServiceModule {
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val httpClient = OkHttpClient().newBuilder()
+            .connectionSpecs(listOf(ConnectionSpec.MODERN_TLS, ConnectionSpec.CLEARTEXT))
             .addInterceptor(requestInterceptor)
             .addInterceptor(loggingInterceptor)
             .build()

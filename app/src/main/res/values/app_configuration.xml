@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="default_api_host" translatable="false">https://imuaythai-api.herokuapp.com</string>
+    <string name="default_api_host" translatable="false">http://imuaythaiorg-001-site4.atempurl.com</string>
     <string name="default_selected_ring" translatable="false">A</string>
 
 </resources>

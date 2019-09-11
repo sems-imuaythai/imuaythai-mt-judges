@@ -13,7 +13,7 @@ class InitializeUseCase @Inject constructor(
     class Request{}
 
     override fun execute(request: Request): FightDataDto {
-        return mtService.initialize(Ring.A)
+        return mtService.fight()
     }
 
 }

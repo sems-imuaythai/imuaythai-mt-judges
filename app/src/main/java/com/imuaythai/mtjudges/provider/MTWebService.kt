@@ -6,47 +6,52 @@ import com.imuaythai.mtjudges.provider.authorization.AuthorizationRepository
 import com.imuaythai.mtjudges.provider.dto.*
 import com.imuaythai.mtjudges.provider.webservice.WebService
 import com.imuaythai.mtjudges.service.*
+import retrofit2.Response
 import javax.inject.Inject
+import javax.inject.Named
 
 class MTWebService @Inject constructor(
+    @Named("SELECTED_RING") val ringName: String,
     private val webService: WebService,
     private val authorizationRepository: AuthorizationRepository,
     private val accessTokenDecoder: AccessTokenDecoder
 ): MTService {
 
-    override fun initialize(ring: Ring): FightDataDto {
+    override fun contest(): ContestDto {
 
-        val response = webService.initialize(1122, ring.name).execute()
+        val contest = authorizationRepository.getContest()
 
-        if(response.isSuccessful && response.body() != null){
-
-            return response.body()!!
-
+        return if(contest != null){
+            contest
         } else {
+            val response = webService.contests().execute()
+            read(response){ contestListDto->
+                val contestDto = contestListDto.contests!![0]
+                authorizationRepository.setContest(contestDto)
+                contestDto;
+            }
+        }
+    }
 
-            throw RequestException()
+    override fun fight(): FightDataDto {
 
+        val contestId = contest().id
+
+        val response = webService.fight(contestId, ringName).execute()
+        return read(response){ fightDto ->
+            fightDto
         }
     }
 
     override fun login(pin: String): UserDataDto {
 
-        val response = webService.login(1122, Ring.A.name, PinDto(pin)).execute()
+        val contestId = contest().id
 
-        if(response.isSuccessful && response.body() != null){
-
-            val accessToken = response.body()!!
-
+        val response = webService.authorize(contestId, ringName, PinDto(pin)).execute()
+        return read(response){ accessToken ->
             authorizationRepository.setAuthToken(accessToken.accessToken)
-
-            return accessTokenDecoder.decodeUserData(accessToken)
-
-        } else {
-
-            throw RequestException()
-
+            accessTokenDecoder.decodeUserData(accessToken)
         }
-
     }
 
     override fun sendRoundPoints(points: PointCardDto) {
@@ -59,5 +64,17 @@ class MTWebService @Inject constructor(
 
     override fun commitResult() {
 
+    }
+
+    override fun logout() {
+        authorizationRepository.clearSession()
+    }
+
+    private fun <T,R> read(response: Response<T?>, callable: (T) -> R ): R{
+        if(response.isSuccessful && response.body() != null){
+            return callable.invoke(response.body()!!)
+        } else {
+            throw RequestException()
+        }
     }
 }

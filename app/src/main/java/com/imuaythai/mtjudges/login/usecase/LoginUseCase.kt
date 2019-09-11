@@ -20,10 +20,10 @@ class LoginUseCase @Inject constructor(
 
     override fun execute(request: Request): Response {
         Thread.sleep(2000)
-        val response = mtService.login(request.pinCode)
+        val response = mtService.login("456321")
         return Response(
-            response.username,
-            response.judgeRole
+            response.familyName,
+            UserRole.POINT_JUDGE
         )
     }
 }
