@@ -2,6 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/content_layout"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -11,83 +12,143 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <LinearLayout
-                    android:id="@+id/login_form"
-                    android:visibility="gone"
-                    android:orientation="vertical"
-                    android:layout_width="240dp"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true">
-
-                <EditText
-                        android:id="@+id/login_input"
-                        style="@style/form_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:imeOptions="actionNext|actionGo"
-                        android:hint="@string/hint_email" />
-
-                <EditText
-                        android:layout_marginTop="5dp"
-                        android:id="@+id/pass_input"
-                        style="@style/form_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:imeOptions="actionGo"
-                        android:hint="@string/hint_password" />
-
-                <View android:layout_width="match_parent"
-                      android:layout_height="@dimen/margin_normal" />
-
-                <com.imuaythai.mtjudges.ui.SubmitButton
-                        android:id="@+id/submit_button"
-                        style="@style/button_login"
-                        app:text="@string/action_login"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp" />
-
-            </LinearLayout>
 
             <LinearLayout
-                    android:id="@+id/disconnected_view"
+                    android:id="@+id/container"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:layout_centerVertical="true"
-                    android:visibility="gone"
-                    android:layout_centerHorizontal="true">
+                    android:layout_height="match_parent">
 
-                <ImageView
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_connection_lost"  />
+                <LinearLayout
+                        android:id="@+id/empty_view"
+                        android:orientation="vertical"
+                        tools:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true">
 
-                <TextView
-                        android:layout_marginTop="4dp"
-                        android:id="@+id/connection_lost_title_label"
-                        style="@style/label_header_text"
-                        android:text="[message]"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    <ImageView
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.6"
+                            android:padding="8dp"
+                            android:src="@drawable/img_boxing_gloves"  />
 
-                <TextView
-                        android:layout_marginTop="4dp"
-                        android:id="@+id/connection_lost_message_label"
-                        style="@style/label_small_text"
-                        android:text="[touch to reconnect]"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    <TextView
+                            android:layout_marginTop="4dp"
+                            style="@style/label_header_text"
+                            android:text="Active fight not found"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    <TextView
+                            android:layout_marginTop="4dp"
+                            style="@style/label_small_text"
+                            android:text="please wait"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/login_form"
+                        android:visibility="gone"
+
+                        android:orientation="vertical"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    <TextView android:id="@+id/fight_name"
+                              style="@style/label_small_text"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:paddingTop="@dimen/margin_normal"
+                              android:text="Fight no.51"
+                    />
+
+                    <LinearLayout android:gravity="center_horizontal|center_vertical"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="horizontal" >
+
+                        <TextView android:id="@+id/red_fighter_name"
+                                  style="@style/label_header_text"
+                                  android:layout_weight="1"
+                                  android:layout_width="0dp"
+                                  android:gravity="right"
+                                  android:layout_marginLeft="@dimen/margin_normal"
+                                  android:layout_height="wrap_content"
+                                  android:text="Rocky Balbao" />
+
+                        <TextView style="@style/label_header_text"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="@dimen/margin_normal"
+                                  android:text="VS" />
+
+                        <TextView android:id="@+id/blue_fighter_name"
+                                  style="@style/label_header_text"
+                                  android:layout_weight="1"
+                                  android:gravity="left"
+                                  android:layout_marginRight="@dimen/margin_normal"
+                                  android:layout_width="0dp"
+                                  android:layout_height="wrap_content"
+                                  android:text="Jhon Cina" />
+
+
+                    </LinearLayout>
+
+                    <com.imuaythai.mtjudges.ui.PinKeyboardView
+                            android:id="@+id/pin_keyboard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/disconnected_view"
+                        android:orientation="vertical"
+                        tools:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:layout_centerVertical="true"
+                        android:visibility="gone"
+                        android:layout_centerHorizontal="true">
+
+                    <ImageView
+                            android:layout_width="96dp"
+                            android:layout_height="96dp"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_connection_lost"  />
+
+                    <TextView
+                            android:layout_marginTop="4dp"
+                            android:id="@+id/connection_lost_title_label"
+                            style="@style/label_header_text"
+                            android:text="[message]"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    <TextView
+                            android:layout_marginTop="4dp"
+                            android:id="@+id/connection_lost_message_label"
+                            style="@style/label_small_text"
+                            android:text="[touch to reconnect]"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                     android:id="@+id/progress_view"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -111,27 +172,27 @@
 
             </LinearLayout>
 
-        <ImageView
-                android:id="@+id/btn_settings"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_settings"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true" />
+            <ImageView
+                    android:id="@+id/btn_settings"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_settings"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true" />
 
-        <TextView
-                android:text="A"
-                android:textSize="@dimen/text_size_16"
-                android:gravity="center_horizontal|center_vertical"
-                android:background="@color/text_color_main"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:id="@+id/ring_text_view"/>
+            <TextView
+                    android:text="A"
+                    android:textSize="@dimen/text_size_16"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:background="@color/text_color_main"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/ring_text_view"/>
 
         </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.imuaythai.mtjudges.login.exception
+package com.imuaythai.mtjudges.common.exception
 
 import android.content.Context
 import com.imuaythai.mtjudges.R
@@ -17,7 +17,7 @@ class LoginErrorResolver @Inject constructor(
         if (throwable is RetrofitException){
             val response : ErrorResponse? = throwable.getErrorBodyAs(ErrorResponse::class.java)
             return if(response!=null)
-                ErrorData(response.Message)
+                ErrorData(response.message)
             else
                 ErrorData(throwable.message ?: context.getString(R.string.error_generic_message))
         }else if(throwable is IOException){

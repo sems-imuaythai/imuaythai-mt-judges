@@ -1,15 +1,15 @@
-package com.imuaythai.mtjudges.login.validation
+package com.imuaythai.mtjudges.common.validation
 
 import androidx.lifecycle.MutableLiveData
 import com.imuaythai.mtjudges.common.model.FormValidator
-import com.imuaythai.mtjudges.login.model.LoginData
+import com.imuaythai.mtjudges.provider.webservice.dto.LoginData
 import com.imuaythai.mtjudges.ui.validation.EmailValidator
 import com.imuaythai.mtjudges.ui.validation.PasswordValidator
 import javax.inject.Inject
 
 class LoginFormValidator @Inject constructor(
-    val emailValidator: EmailValidator,
-    val passwordValidator: PasswordValidator
+    private val emailValidator: EmailValidator,
+    private val passwordValidator: PasswordValidator
 ) : FormValidator<LoginData>(){
 
     lateinit var loginError : MutableLiveData<String>

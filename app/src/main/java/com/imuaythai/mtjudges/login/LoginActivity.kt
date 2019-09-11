@@ -1,21 +1,17 @@
 package com.imuaythai.mtjudges.login
 
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
 import com.imuaythai.mtjudges.common.BaseActivity
+import com.imuaythai.mtjudges.common.model.Resource
 import com.imuaythai.mtjudges.login.injection.LoginModule
 
 import kotlinx.android.synthetic.main.login_activity.*
-import android.widget.ArrayAdapter
-import com.imuaythai.mtjudges.provider.hubservice.dto.ConnectionState
-import com.imuaythai.mtjudges.provider.hubservice.dto.Ring
-import com.imuaythai.mtjudges.provider.hubservice.dto.UserRole
+import com.imuaythai.mtjudges.common.view.setIsVisibleOrGone
 
-
-class LoginActivity : BaseActivity<LoginViewModel>() {
+class LoginActivity: BaseActivity<LoginViewModel>() {
 
     override fun provideViewLayout(): Int = R.layout.login_activity
 
@@ -25,43 +21,42 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
 
     override fun onBindView(viewModel: LoginViewModel) {
 
-        disconnected_view.setOnClickListener { viewModel.reconnect() }
+        ring_text_view.text = viewModel.ringType
+        disconnected_view.setOnClickListener { viewModel.initializeRequest() }
+        btn_settings.setOnClickListener{ viewModel.onSettingsButtonClicked() }
+        pin_keyboard.setOnPinCompletedListener{ pinCode -> viewModel.pinLoginRequest(pinCode) }
 
-        btn_settings.setOnClickListener{ _ -> viewModel.onSettingsButtonClicked() }
-        submit_button.setOnClickListener { _ -> viewModel.onLoginButtonClicked(
-            login_input.text.toString(),
-            pass_input.text.toString()
-        )}
-
-        viewModel.hubConnectionState.observe(this, Observer { when (it){
-            ConnectionState.CONNECTED -> {
-                progress_view.visibility = View.GONE
-                login_form.visibility = View.VISIBLE
-                disconnected_view.visibility = View.GONE
+        viewModel.fightDataResource.observe(this, Observer {
+            when(it.status){
+                Resource.Status.SUCCESS -> {
+                    red_fighter_name.text = it.data?.redAthleteName
+                    blue_fighter_name.text = it.data?.blueAthleteName
+                    fight_name.text = it.data?.weightCategory
+                }
+                Resource.Status.EMPTY -> {}
+                Resource.Status.LOADING -> {}
+                Resource.Status.ERROR -> {}
             }
-            ConnectionState.CONNECTING -> {
-                progress_view.visibility = View.VISIBLE
-                login_form.visibility = View.GONE
-                disconnected_view.visibility = View.GONE
-            }
-            ConnectionState.DISCONNECTED -> {
-                progress_view.visibility = View.GONE
-                login_form.visibility = View.GONE
-                disconnected_view.visibility = View.VISIBLE
-            }
-            else ->{}
-        }})
-
-        viewModel.loginError.observe(this, Observer { login_input.error = it })
-        viewModel.passwordError.observe(this, Observer { pass_input.error = it })
-        viewModel.displayProgressLoaderAction.observe(this, Observer {
-            submit_button.displayProgressBar(it)
-            btn_settings.isEnabled = !it
-            login_input.isEnabled = !it
-            pass_input.isEnabled = !it
+            disconnected_view.setIsVisibleOrGone(it.status == Resource.Status.ERROR)
+            progress_view.setIsVisibleOrGone(it.status == Resource.Status.LOADING)
+            login_form.setIsVisibleOrGone(it.status == Resource.Status.SUCCESS)
+            empty_view.setIsVisibleOrGone(it.status == Resource.Status.EMPTY)
         })
-        viewModel.errorDisplayLiveData.observe(this,  Observer { throwable -> displaySnackBarError(throwable)})
-        viewModel.ringType.observe(this, Observer { value -> ring_text_view.text = value })
+
+        viewModel.isScreenLoading.observe(this, Observer {
+            if(it == true){
+                progress_view.setIsVisibleOrGone(true)
+                container.setIsVisibleOrGone(false)
+            }else{
+                progress_view.setIsVisibleOrGone(false)
+                container.setIsVisibleOrGone(true)
+            }
+        })
+
+        viewModel.pinLoginError.observe(this, Observer {
+            pin_keyboard.displayError(it)
+        })
+
     }
 
 }

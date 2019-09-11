@@ -1,86 +1,61 @@
 package com.imuaythai.mtjudges.login
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.imuaythai.mtjudges.application.navigation.RestartApplicationAction
 import com.imuaythai.mtjudges.common.BaseViewModel
-import com.imuaythai.mtjudges.login.exception.LoginErrorResolver
-import com.imuaythai.mtjudges.login.service.LoginService
-import com.imuaythai.mtjudges.login.service.UserService
-import com.imuaythai.mtjudges.login.validation.LoginFormValidator
+import com.imuaythai.mtjudges.common.model.Resource
+import com.imuaythai.mtjudges.common.view.ConfigurationChangeObserver
+import com.imuaythai.mtjudges.login.usecase.InitializeUseCase
+import com.imuaythai.mtjudges.login.usecase.LoginUseCase
+import com.imuaythai.mtjudges.navigation.NavigateToJuryJudgeActivityAction
+import com.imuaythai.mtjudges.navigation.NavigateToPointJudgeActivityAction
 import com.imuaythai.mtjudges.navigation.NavigateToSettingsActivityAction
-import com.imuaythai.mtjudges.provider.hubservice.HubService
-import com.imuaythai.mtjudges.provider.hubservice.dto.ConnectionState
-import com.imuaythai.mtjudges.provider.hubservice.dto.Ring
-import com.imuaythai.mtjudges.settings.model.SettingType
+import com.imuaythai.mtjudges.navigation.NavigateToTimeJudgeActivityAction
+import com.imuaythai.mtjudges.provider.dto.FightDataDto
+import com.imuaythai.mtjudges.provider.dto.UserRole
 import com.imuaythai.mtjudges.settings.service.SettingsService
 import javax.inject.Inject
-
+import javax.inject.Named
 
 class LoginViewModel @Inject constructor(
-    private val loginService: LoginService,
+    @Named("SELECTED_RING") val ringName: String,
     private val settingsService : SettingsService,
-    private val loginErrorResolver: LoginErrorResolver,
-    private val loginFormValidator: LoginFormValidator,
-    private val userService: UserService,
-    private val hubService: HubService
+    private val initializeLoginUseCase: InitializeUseCase,
+    private val loginUseCase: LoginUseCase
 ): BaseViewModel() {
 
-    private var configurationChangeId = 0
+    private val configurationChangeObserver = ConfigurationChangeObserver(this)
 
-    val hubConnectionState: LiveData<ConnectionState> = hubService.connect()
+    val ringType: String = ringName.toUpperCase()
 
-    val ringType : MutableLiveData<String> = MutableLiveData()
+    val isScreenLoading : MutableLiveData<Boolean> = MutableLiveData()
 
-    val loginError : MutableLiveData<String> = MutableLiveData()
+    val pinLoginError: MutableLiveData<String> = MutableLiveData()
 
-    val passwordError : MutableLiveData<String> = MutableLiveData()
+    val fightDataResource: MutableLiveData<Resource<FightDataDto>> = MutableLiveData()
 
     init {
-        loginFormValidator.passwordError = passwordError
-        loginFormValidator.loginError = loginError
-
-        settingsService.provideSettingsItem(SettingType.SELECTED_RING).observeForever {
-            ringType.value = it.value.capitalize()
-        }
-
-        settingsService.provideConfigurationChangeObservable().observeForever { value ->
-            if (configurationChangeId != 0 && configurationChangeId != value) {
-                navigate(RestartApplicationAction())
-            } else {
-                configurationChangeId = value
-            }
-        }
+        configurationChangeObserver.observe(settingsService.provideConfigurationChangeObservable())
+        initializeRequest()
     }
 
-    fun onLoginButtonClicked(email: String, password: String) {
+    fun initializeRequest(){
+        execute(initializeLoginUseCase,InitializeUseCase.Request())
+            .bind(fightDataResource)
+    }
 
-
-        /*val loginData = LoginData(email,password)
-        loginFormValidator.validate(loginData)
-        if(loginFormValidator.isValid) {
-            execute(loginService.login(loginData), Consumer {
-                val userData : UserData? = it.user
-                if(userData != null) {
-                    userService.setUserData(userData)
-                    val ring: Ring = Ring.valueOf(ringType.value ?: "A")
-                    navigate(NavigateToConnectActivityAction(ring))
-                }
-            }, loginErrorResolver)
-        }*/
+    fun pinLoginRequest(pinCode: String){
+        val request = LoginUseCase.Request(pinCode)
+        execute(loginUseCase,request).withLoader(isScreenLoading).subscribe({ response ->
+            when(response.userRole){
+                UserRole.TIME_JUDGE -> navigate(NavigateToTimeJudgeActivityAction())
+                UserRole.POINT_JUDGE -> navigate(NavigateToPointJudgeActivityAction())
+                UserRole.JURY_JUDGE -> navigate(NavigateToJuryJudgeActivityAction())
+            }
+        },{ error ->
+            pinLoginError.value = error.message
+        })
     }
 
     fun onSettingsButtonClicked() = navigate(NavigateToSettingsActivityAction())
-
-    fun reconnect() = hubService.connect()
-
-    fun onConfigurationChange(value: Int) {
-        if (configurationChangeId != 0 && configurationChangeId != value) {
-            navigate(RestartApplicationAction())
-        } else {
-            configurationChangeId = value
-        }
-    }
 
 }

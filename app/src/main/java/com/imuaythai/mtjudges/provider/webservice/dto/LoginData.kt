@@ -1,4 +1,4 @@
-package com.imuaythai.mtjudges.login.model
+package com.imuaythai.mtjudges.provider.webservice.dto
 
 class LoginData constructor(
     val email : String,

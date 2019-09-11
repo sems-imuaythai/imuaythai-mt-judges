@@ -10,7 +10,7 @@ import com.imuaythai.mtjudges.main.MainActivity
 import com.imuaythai.mtjudges.point.judge.injection.PointJudgeComponent
 import com.imuaythai.mtjudges.point.judge.injection.PointJudgeModule
 import com.imuaythai.mtjudges.provider.hubservice.injection.HubConnectionModule
-import com.imuaythai.mtjudges.provider.webservice.injection.MTWebServiceModule
+import com.imuaythai.mtjudges.provider.webservice.injection.WebServiceModule
 import com.imuaythai.mtjudges.settings.injection.SettingsComponent
 import com.imuaythai.mtjudges.settings.injection.SettingsModule
 import com.imuaythai.mtjudges.splash.SplashActivity
@@ -21,7 +21,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component( modules = [ ApplicationModule::class, MTWebServiceModule::class, HubConnectionModule::class ] )
+@Component( modules = [ ApplicationModule::class, HubConnectionModule::class, WebServiceModule::class ] )
 interface ApplicationComponent {
 
     fun plus( module : LoginModule ) : LoginComponent

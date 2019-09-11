@@ -5,8 +5,7 @@ import android.content.Context
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
 import com.imuaythai.mtjudges.application.injection.ApplicationModule
 import com.imuaythai.mtjudges.application.injection.DaggerApplicationComponent
-import com.imuaythai.mtjudges.provider.hubservice.dto.Ring
-import com.imuaythai.mtjudges.provider.webservice.injection.MTWebServiceModule
+import com.imuaythai.mtjudges.provider.hubservice.injection.HubConnectionModule
 import java.security.SecureRandom
 import javax.net.ssl.*
 
@@ -20,24 +19,6 @@ class MTJudgesApplication : Application() {
         initializeInjection();
 
 
-        /*val cf = CertificateFactory.getInstance("X.509")
-        val caInput = resources.openRawResource(R.raw.localhost)
-        val ca = cf.generateCertificate(caInput)
-        println("ca=" + (ca as X509Certificate).subjectDN)
-
-        val keyStoreType = KeyStore.getDefaultType()
-        val keyStore = KeyStore.getInstance(keyStoreType)
-        keyStore.load(null, null)
-        keyStore.setCertificateEntry("ca", ca)
-
-        val tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm()
-        val tmf = TrustManagerFactory.getInstance(tmfAlgorithm)
-        tmf.init(keyStore)
-
-        val context = SSLContext.getInstance("TLS")
-        context.init(null, tmf.trustManagers, null)
-        HttpsURLConnection.setDefaultSSLSocketFactory(context.socketFactory)*/
-
         HttpsURLConnection.setDefaultHostnameVerifier(NullHostNameVerifier())
         val context = SSLContext.getInstance("TLS")
         context.init(null, arrayOf<X509TrustManager>(NullX509TrustManager()), SecureRandom())
@@ -45,12 +26,10 @@ class MTJudgesApplication : Application() {
         SocketFactory = context.getSocketFactory();
     }
 
-
-
     private fun initializeInjection(){
         applicationComponent = DaggerApplicationComponent.builder()
             .applicationModule(ApplicationModule(this))
-            .mTWebServiceModule(MTWebServiceModule())
+            .hubConnectionModule(HubConnectionModule())
             .build()
     }
 

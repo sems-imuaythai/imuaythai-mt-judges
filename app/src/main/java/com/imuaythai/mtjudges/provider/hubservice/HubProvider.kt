@@ -1,13 +1,10 @@
 package com.imuaythai.mtjudges.provider.hubservice
 
 import androidx.lifecycle.LiveData
-import com.imuaythai.mtjudges.provider.hubservice.dto.ConnectionState
 import com.imuaythai.mtjudges.provider.hubservice.dto.FightDescription
 
-interface HubService {
+interface HubProvider{
 
-    fun connect(): LiveData<ConnectionState>
-
-
+    fun fightDescriptionObservable(): LiveData<FightDescription>
 
 }

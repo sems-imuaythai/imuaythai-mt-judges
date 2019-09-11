@@ -5,7 +5,7 @@ import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.change.settings.model.SettingsListItem
 import com.imuaythai.mtjudges.common.model.Validator
 import com.imuaythai.mtjudges.common.model.ValidatorFactory
-import com.imuaythai.mtjudges.provider.hubservice.dto.Ring
+import com.imuaythai.mtjudges.provider.dto.Ring
 import com.imuaythai.mtjudges.ui.validation.SpinnerValidator
 import com.imuaythai.mtjudges.ui.validation.UrlValidator
 
@@ -32,9 +32,12 @@ enum class SettingType constructor(
         override fun createValidator(context: Context): Validator<String> = SpinnerValidator(context)
 
         override fun createOptions(context: Context): List<SettingsListItem> = ArrayList<SettingsListItem>().apply{
-            add(SettingsListItem(context.getString(R.string.settings_selected_ring_option_label,"A"),Ring.A.name))
-            add(SettingsListItem(context.getString(R.string.settings_selected_ring_option_label,"B"),Ring.B.name))
-            add(SettingsListItem(context.getString(R.string.settings_selected_ring_option_label,"C"),Ring.C.name))
+            add(SettingsListItem(context.getString(R.string.settings_selected_ring_option_label,"A"),
+                Ring.A.name))
+            add(SettingsListItem(context.getString(R.string.settings_selected_ring_option_label,"B"),
+                Ring.B.name))
+            add(SettingsListItem(context.getString(R.string.settings_selected_ring_option_label,"C"),
+                Ring.C.name))
         }
     }
 
