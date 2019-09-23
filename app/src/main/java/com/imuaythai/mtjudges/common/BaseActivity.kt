@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 abstract class BaseActivity<VIEW_MODEL:BaseViewModel> : AppCompatActivity(), NavigationHandler {
 
-    private lateinit var viewModel: VIEW_MODEL
+    protected lateinit var viewModel: VIEW_MODEL
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -90,5 +90,6 @@ abstract class BaseActivity<VIEW_MODEL:BaseViewModel> : AppCompatActivity(), Nav
     abstract fun onBindView(viewModel : VIEW_MODEL)
 
     fun setArguments(viewModel : VIEW_MODEL){}
+
 
 }

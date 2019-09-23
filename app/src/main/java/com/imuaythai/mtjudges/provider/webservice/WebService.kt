@@ -17,9 +17,16 @@ interface WebService{
 
     @POST(value = "/api/Contests/{contestId}/Rings/{ringName}/tasks/authorize")
     @Headers(value = ["No-Authentication: true"])
-    fun authorize(@Path("contestId") contestId: Int,
-              @Path("ringName") ringName: String,
-              @Body pin: PinDto
+    fun authorize(
+                @Path("contestId") contestId: Int,
+                @Path("ringName") ringName: String,
+                @Body pin: PinDto
     ): Call<AccessTokenDto>
+
+    @GET(value = "/api/Contests/{contestId}/Rings/{ringName}/fight/points")
+    fun sendPoints( @Path("contestId") contestId: Int,
+                    @Path("ringName") ringName: String,
+                    @Body pointsDto: AddRingFightPointsDto
+    ): Call<FightDataDto>
 
 }

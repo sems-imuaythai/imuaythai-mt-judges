@@ -54,7 +54,7 @@ class MTWebService @Inject constructor(
         }
     }
 
-    override fun sendRoundPoints(points: PointCardDto) {
+    override fun sendRoundPoints(points: AddRingFightPointsDto) {
 
     }
 

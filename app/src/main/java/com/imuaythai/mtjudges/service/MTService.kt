@@ -14,7 +14,8 @@ interface MTService {
     @Throws(RequestException::class)
     fun login(pin: String): UserDataDto
 
-    fun sendRoundPoints(points: PointCardDto)
+    @Throws(RequestException::class)
+    fun sendRoundPoints(points: AddRingFightPointsDto)
 
     fun sendKnockOutResult(knockOutDto: KnockOutDto)
 

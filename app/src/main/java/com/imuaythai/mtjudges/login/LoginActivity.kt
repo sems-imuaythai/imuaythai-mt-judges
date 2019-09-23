@@ -29,8 +29,8 @@ class LoginActivity: BaseActivity<LoginViewModel>() {
         viewModel.fightDataResource.observe(this, Observer {
             when(it.status){
                 Resource.Status.SUCCESS -> {
-                    red_fighter_name.text = it.data?.redAthleteName
-                    blue_fighter_name.text = it.data?.blueAthleteName
+                    red_fighter_name.text = it.data?.redFighterName
+                    blue_fighter_name.text = it.data?.blueFighterName
                     fight_name.text = it.data?.weightCategory
                 }
                 Resource.Status.EMPTY -> {}
