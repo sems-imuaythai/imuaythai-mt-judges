@@ -11,7 +11,6 @@ import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.common.BaseActivity
 import com.imuaythai.mtjudges.databinding.ScoreCardFragmentBinding
 import com.imuaythai.mtjudges.point.judge.injection.PointJudgeModule
-import kotlinx.android.synthetic.main.login_activity.*
 import kotlinx.android.synthetic.main.score_card_fragment.*
 
 class PointJudgeActivity : BaseActivity<PointJudgeViewModel>() {

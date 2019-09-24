@@ -2,6 +2,8 @@ package com.imuaythai.mtjudges.provider
 
 import com.imuaythai.mtjudges.provider.dto.FightDataDto
 import com.imuaythai.mtjudges.provider.dto.FightStatusDto
+import com.imuaythai.mtjudges.provider.dto.UserDataDto
+import com.imuaythai.mtjudges.provider.dto.UserRole
 import com.imuaythai.mtjudges.service.FightDataStore
 import com.imuaythai.mtjudges.service.FightRepository
 import io.reactivex.Observable
@@ -14,6 +16,8 @@ import javax.inject.Singleton
 class FightRepositoryImpl @Inject constructor(): FightRepository, FightDataStore {
 
     private lateinit var fightDataDto: FightDataDto
+
+    private lateinit var userDataDto: UserDataDto
 
     private var fightStatus: BehaviorSubject<FightStatusDto> = BehaviorSubject.create()
 
@@ -29,7 +33,16 @@ class FightRepositoryImpl @Inject constructor(): FightRepository, FightDataStore
         this.fightDataDto = fightDataDto
     }
 
+    override fun saveUserData(userDataDto: UserDataDto) {
+        this.userDataDto = userDataDto
+
+    }
+
     override fun updateFightStatus(fightStatusDto: FightStatusDto) {
         fightStatus.onNext(fightStatusDto)
     }
+
+    override fun getUserData(): UserDataDto = userDataDto
+
+    override fun getUserRole(): UserRole = UserRole.POINT_JUDGE
 }

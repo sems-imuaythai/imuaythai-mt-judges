@@ -26,13 +26,17 @@ abstract class BaseFragment<VIEW_MODEL:BaseViewModel> : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(provideViewLayout(), container, false)
+        viewModel = provideViewModel(ViewModelProviders.of(this, viewModelFactory))
+        return createView(inflater,container,viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = provideViewModel(ViewModelProviders.of(this, viewModelFactory))
         viewModel.fragmentNavigateAction.observe(this, Observer { action -> action.visit( activity as NavigationHandler ) })
         onBindView(viewModel)
+    }
+
+    open fun createView(inflater: LayoutInflater, container: ViewGroup?, viewModel: VIEW_MODEL): View{
+        return inflater.inflate(provideViewLayout(), container, false)
     }
 
     abstract fun provideViewLayout() : Int

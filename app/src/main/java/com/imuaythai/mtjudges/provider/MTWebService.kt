@@ -52,7 +52,9 @@ class MTWebService @Inject constructor(
 
         return read(response){ accessToken ->
             authorizationRepository.setAuthToken(accessToken.accessToken)
-            accessTokenDecoder.decodeUserData(accessToken)
+            val userDataDto = accessTokenDecoder.decodeUserData(accessToken)
+            fightDataStore.saveUserData(userDataDto)
+            userDataDto
         }
     }
 

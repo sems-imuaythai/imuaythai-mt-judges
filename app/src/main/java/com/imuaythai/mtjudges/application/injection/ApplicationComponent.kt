@@ -2,6 +2,8 @@ package com.imuaythai.mtjudges.application.injection
 
 import com.imuaythai.mtjudges.change.settings.injection.ChangeSettingsComponent
 import com.imuaythai.mtjudges.change.settings.injection.ChangeSettingsModule
+import com.imuaythai.mtjudges.fight.header.injection.FightHeaderComponent
+import com.imuaythai.mtjudges.fight.header.injection.FightHeaderModule
 import com.imuaythai.mtjudges.jury.judge.injection.JuryJudgeComponent
 import com.imuaythai.mtjudges.jury.judge.injection.JuryJudgeModule
 import com.imuaythai.mtjudges.login.injection.LoginComponent
@@ -33,6 +35,8 @@ interface ApplicationComponent {
     fun plus( module: ChangeSettingsModule ) : ChangeSettingsComponent
 
     fun plus(module: PointJudgeModule): PointJudgeComponent
+
+    fun plus(module: FightHeaderModule): FightHeaderComponent
 
     fun inject(activity: MainActivity)
 

@@ -23,5 +23,8 @@ data class UserDataDto(
     val familyName: String,
 
     @SerializedName("aud")
-    val aud: String
+    val aud: String,
+
+    @SerializedName("judge_role")
+    val judgeRole: String
 )
