@@ -26,6 +26,8 @@ class PinKeyboardView: FrameLayout{
     private lateinit var codeCharDotView2: ImageView
     private lateinit var codeCharDotView3: ImageView
     private lateinit var codeCharDotView4: ImageView
+    private lateinit var codeCharDotView5: ImageView
+    private lateinit var codeCharDotView6: ImageView
 
     private var code: String = ""
 
@@ -51,6 +53,8 @@ class PinKeyboardView: FrameLayout{
         codeCharDotView2 = findViewById(R.id.char_input_2)
         codeCharDotView3 = findViewById(R.id.char_input_3)
         codeCharDotView4 = findViewById(R.id.char_input_4)
+        codeCharDotView5 = findViewById(R.id.char_input_5)
+        codeCharDotView6 = findViewById(R.id.char_input_6)
 
         buttons.forEach { button ->
             button.setOnClickListener {
@@ -64,11 +68,11 @@ class PinKeyboardView: FrameLayout{
     }
 
     private fun onClickKey(char: Char){
-        if(code.length < 4){
+        if(code.length < 6){
             code += char
             displayCode(code)
         }
-        if(code.length == 4){
+        if(code.length == 6){
             onPinCompletedListener?.invoke(code)
         }
     }
@@ -85,11 +89,13 @@ class PinKeyboardView: FrameLayout{
         setDotHeight(codeCharDotView2, code.length > 1)
         setDotHeight(codeCharDotView3, code.length > 2)
         setDotHeight(codeCharDotView4, code.length > 3)
+        setDotHeight(codeCharDotView5, code.length > 4)
+        setDotHeight(codeCharDotView6, code.length > 5)
     }
 
     private fun setDotHeight( dotView: ImageView, isActive: Boolean ){
         if(isActive) {
-            val anim = ValueAnimator.ofInt(dotView.measuredHeight, 35.toPx())
+            val anim = ValueAnimator.ofInt(dotView.measuredHeight, 28.toPx())
             anim.interpolator = AccelerateDecelerateInterpolator()
             anim.addUpdateListener { valueAnimator ->
                 val value = valueAnimator.animatedValue as Int
@@ -97,7 +103,7 @@ class PinKeyboardView: FrameLayout{
                 layoutParams.height = value
                 dotView.layoutParams = layoutParams
             }
-            anim.duration = 100
+            anim.duration = 80
             anim.start()
         }else{
             val anim = ValueAnimator.ofInt(dotView.measuredHeight, 5.toPx())
@@ -108,7 +114,7 @@ class PinKeyboardView: FrameLayout{
                 layoutParams.height = value
                 dotView.layoutParams = layoutParams
             }
-            anim.duration = 100
+            anim.duration = 80
             anim.start()
         }
     }
@@ -129,6 +135,8 @@ class PinKeyboardView: FrameLayout{
         clearDotHeight(codeCharDotView2)
         clearDotHeight(codeCharDotView3)
         clearDotHeight(codeCharDotView4)
+        clearDotHeight(codeCharDotView5)
+        clearDotHeight(codeCharDotView6)
         requestLayout()
         invalidate()
     }

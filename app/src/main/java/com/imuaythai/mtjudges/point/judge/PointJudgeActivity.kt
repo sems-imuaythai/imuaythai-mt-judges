@@ -1,14 +1,17 @@
 package com.imuaythai.mtjudges.point.judge
 
+import android.view.View
 import android.widget.CompoundButton
 import android.widget.RadioButton
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
 import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.common.BaseActivity
 import com.imuaythai.mtjudges.databinding.ScoreCardFragmentBinding
 import com.imuaythai.mtjudges.point.judge.injection.PointJudgeModule
+import kotlinx.android.synthetic.main.login_activity.*
 import kotlinx.android.synthetic.main.score_card_fragment.*
 
 class PointJudgeActivity : BaseActivity<PointJudgeViewModel>() {
@@ -30,17 +33,28 @@ class PointJudgeActivity : BaseActivity<PointJudgeViewModel>() {
         binding.setLifecycleOwner(this)
 
         radio_red.setOnCheckedChangeListener { group, checkedId ->
-            val radioButton: RadioButton = findViewById(checkedId)
-            viewModel.setRedPoints(Integer.parseInt(radioButton.text.toString()))
+            val radioButton: RadioButton? = findViewById(checkedId)
+            if(radioButton != null) {
+                viewModel.setRedPoints(Integer.parseInt(radioButton.text.toString()))
+            }
         }
 
         radio_blu.setOnCheckedChangeListener { group, checkedId ->
-            val radioButton: RadioButton = findViewById(checkedId)
-            viewModel.setBluePoints(Integer.parseInt(radioButton.text.toString()))
+            val radioButton: RadioButton? = findViewById(checkedId)
+            if(radioButton != null) {
+                viewModel.setBluePoints(Integer.parseInt(radioButton.text.toString()))
+            }
         }
 
         Red_accept.setOnCheckedChangeListener(this::onCheckedAcceptButton)
         Blu_accept.setOnCheckedChangeListener(this::onCheckedAcceptButton)
+
+        viewModel.scoreCardVisibility.observe(this, Observer {
+            if(it == View.GONE){
+                radio_red.check(-1)
+                radio_blu.check(-1)
+            }
+        })
     }
 
     private fun onCheckedAcceptButton(buttonView: CompoundButton, isChecked: Boolean){

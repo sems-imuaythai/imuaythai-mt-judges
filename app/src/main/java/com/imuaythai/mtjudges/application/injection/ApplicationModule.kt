@@ -11,6 +11,9 @@ import com.imuaythai.mtjudges.application.injection.view.model.ViewModelFactory
 import com.imuaythai.mtjudges.application.injection.view.model.ViewModelKey
 import com.imuaythai.mtjudges.application.injection.view.model.EmptyViewModel
 import com.imuaythai.mtjudges.main.MainViewModel
+import com.imuaythai.mtjudges.provider.FightRepositoryImpl
+import com.imuaythai.mtjudges.service.FightDataStore
+import com.imuaythai.mtjudges.service.FightRepository
 import com.imuaythai.mtjudges.settings.model.SettingType
 import com.imuaythai.mtjudges.settings.service.SettingsService
 import com.imuaythai.mtjudges.settings.service.SettingsServiceImpl
@@ -98,6 +101,10 @@ class ApplicationModule constructor(
     @Provides @Singleton
     fun provideTrustManager(): X509TrustManager = NullX509TrustManager()
 
+    @Provides @Singleton
+    fun provideFightDataStore(fightRepositoryImpl: FightRepositoryImpl): FightDataStore = fightRepositoryImpl
 
+    @Provides @Singleton
+    fun provideFightRepository(fightRepositoryImpl: FightRepositoryImpl): FightRepository = fightRepositoryImpl
 
 }

@@ -16,13 +16,13 @@ data class FightDataDto(
     val breakDuration: Int,
 
     @SerializedName("redFighterId")
-    val redFighterId: Int,
+    val redFighterId: String,
 
     @SerializedName("redFighterName")
     val redFighterName: String,
 
     @SerializedName("blueFighterId")
-    val blueFighterId: Int,
+    val blueFighterId: String,
 
     @SerializedName("blueFighterName")
     val blueFighterName: String

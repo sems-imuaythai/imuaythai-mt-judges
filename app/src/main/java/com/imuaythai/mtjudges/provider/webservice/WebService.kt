@@ -23,7 +23,7 @@ interface WebService{
                 @Body pin: PinDto
     ): Call<AccessTokenDto>
 
-    @GET(value = "/api/Contests/{contestId}/Rings/{ringName}/fight/points")
+    @POST(value = "/api/Contests/{contestId}/Rings/{ringName}/fight/points")
     fun sendPoints( @Path("contestId") contestId: Int,
                     @Path("ringName") ringName: String,
                     @Body pointsDto: AddRingFightPointsDto

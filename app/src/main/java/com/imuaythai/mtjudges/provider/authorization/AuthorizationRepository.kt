@@ -2,7 +2,9 @@ package com.imuaythai.mtjudges.provider.authorization
 
 import com.imuaythai.mtjudges.provider.dto.ContestDto
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AuthorizationRepository @Inject constructor(){
 
     private var authToken: String? = null

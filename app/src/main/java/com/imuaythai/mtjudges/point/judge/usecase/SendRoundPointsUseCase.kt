@@ -1,7 +1,7 @@
 package com.imuaythai.mtjudges.point.judge.usecase
 
 import com.imuaythai.mtjudges.common.model.UseCase
-import com.imuaythai.mtjudges.provider.dto.UserRole
+import com.imuaythai.mtjudges.provider.dto.AddRingFightPointsDto
 import com.imuaythai.mtjudges.service.MTService
 import javax.inject.Inject
 
@@ -10,20 +10,13 @@ class SendRoundPointsUseCase @Inject constructor(
 ): UseCase<SendRoundPointsUseCase.Request, SendRoundPointsUseCase.Response> {
 
     data class Request(
-        val pinCode: String
+        val addRingFightPointsDto: AddRingFightPointsDto
     )
 
-    data class Response(
-        val userName: String,
-        val userRole: UserRole
-    )
+    class Response{}
 
     override fun execute(request: Request): Response {
-        Thread.sleep(2000)
-        //val response = mtService.sendRoundPoints("456321")
-        return Response(
-            "",
-            UserRole.POINT_JUDGE
-        )
+        mtService.sendRoundPoints(request.addRingFightPointsDto)
+        return Response()
     }
 }
