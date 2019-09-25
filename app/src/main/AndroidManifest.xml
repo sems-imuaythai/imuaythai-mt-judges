@@ -49,7 +49,7 @@
                   android:windowSoftInputMode="adjustResize"
                   android:theme="@style/AppTheme"/>
 
-        <activity android:name=".jury.judge.JuryJudgeActivity"
+        <activity android:name=".main.judge.MainJudgeActivity"
                   android:screenOrientation="landscape"
                   android:windowSoftInputMode="adjustResize"
                   android:theme="@style/AppTheme"/>

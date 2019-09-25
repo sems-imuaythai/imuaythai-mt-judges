@@ -4,8 +4,8 @@ import com.imuaythai.mtjudges.change.settings.injection.ChangeSettingsComponent
 import com.imuaythai.mtjudges.change.settings.injection.ChangeSettingsModule
 import com.imuaythai.mtjudges.fight.header.injection.FightHeaderComponent
 import com.imuaythai.mtjudges.fight.header.injection.FightHeaderModule
-import com.imuaythai.mtjudges.jury.judge.injection.JuryJudgeComponent
-import com.imuaythai.mtjudges.jury.judge.injection.JuryJudgeModule
+import com.imuaythai.mtjudges.main.judge.injection.MainJudgeComponent
+import com.imuaythai.mtjudges.main.judge.injection.MainJudgeModule
 import com.imuaythai.mtjudges.login.injection.LoginComponent
 import com.imuaythai.mtjudges.login.injection.LoginModule
 import com.imuaythai.mtjudges.main.MainActivity
@@ -44,6 +44,6 @@ interface ApplicationComponent {
 
     fun inject(activity: TestActivity)
 
-    fun plus(module: JuryJudgeModule): JuryJudgeComponent
+    fun plus(module: MainJudgeModule): MainJudgeComponent
 
 }
