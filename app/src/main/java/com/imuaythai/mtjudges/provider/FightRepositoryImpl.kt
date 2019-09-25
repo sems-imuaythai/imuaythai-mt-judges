@@ -9,6 +9,7 @@ import com.imuaythai.mtjudges.service.FightRepository
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.BehaviorSubject
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -45,4 +46,5 @@ class FightRepositoryImpl @Inject constructor(): FightRepository, FightDataStore
     override fun getUserData(): UserDataDto = userDataDto
 
     override fun getUserRole(): UserRole = UserRole.POINT_JUDGE
+
 }

@@ -1,110 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/login"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-            android:id="@+id/resource_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="{time_judge}"
-            android:textSize="25sp"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical|center_horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"  />
+    <data>
 
-    <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:keepScreenOn="true"
-            android:background="@color/background">
+        <variable
+                name="viewModel"
+                type="com.imuaythai.mtjudges.time.judge.TimeJudgeViewModel"/>
+    </data>
 
-        <!--fragment
-                android:name="muaythai.com.muaythaijudges.fragments.HeaderFragment"
-                android:id="@+id/header_fragment"
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical">
+
+            <fragment android:name="com.imuaythai.mtjudges.fight.header.FightHeaderFragment"
+                      android:id="@+id/header_fragment"
+                      tools:layout="@layout/header_fragment"
+                      android:layout_width="match_parent"
+                      android:layout_height="80dp" />
+
+
+        <LinearLayout
+
+                android:id="@+id/login"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                tools:layout="@layout/fragment_header" /-->
-
-        <!--<fragment
-            android:name="muaythai.com.muaythaijudges.fragments.ScoreCardFragment"
-            android:id="@+id/score_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout="@layout/fragment_score_card"
-            android:layout_below="@+id/article_fragment" />-->
-
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent" >
 
             <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="180dp"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true">
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:keepScreenOn="true"
+                    android:background="@color/background">
 
-                <Button
-                        android:layout_width="210dp"
-                        android:layout_height="180dp"
-                        android:text="START"
-                        android:id="@+id/button_start" />
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                <Button
-                        android:layout_width="100dp"
-                        android:layout_height="90dp"
-                        android:text="SIGNAL"
-                        android:id="@+id/button_signal"
-                        android:layout_alignLeft="@+id/button_stop"
-                        android:layout_alignStart="@+id/button_stop"
+                    <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="180dp"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true">
+
+                        <Button
+                                android:layout_width="210dp"
+                                android:layout_height="180dp"
+                                android:text="@{viewModel.actionButtonText}"
+                                android:textSize="30sp"
+                                android:onClick="@{() -> viewModel.onClickActionButton()}"
+                                android:background="@drawable/score_button"
+                                android:textColor="@color/font_dark"
+                                android:enabled="@{viewModel.isActionButtonEnabled}"
+                                android:id="@+id/button_start" />
+
+                        <Button
+                                android:layout_width="100dp"
+                                android:layout_height="90dp"
+                                android:text="SIGNAL"
+                                android:textSize="20sp"
+                                android:onClick="@{() -> viewModel.onClickSignalButton()}"
+                                android:background="@drawable/score_button"
+                                android:textColor="@color/font_dark"
+                                android:enabled="@{viewModel.isSignalButtonEnabled}"
+                                android:id="@+id/button_signal"
+                                android:layout_alignLeft="@+id/button_stop"
+                                android:layout_alignStart="@+id/button_stop"
+                                android:layout_alignParentBottom="true"
+                                android:layout_below="@+id/button_stop" />
+
+                        <Button
+                                android:layout_width="100dp"
+                                android:layout_height="90dp"
+                                android:text="STOP"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:textSize="20sp"
+                                android:onClick="@{() -> viewModel.onClickStopButton()}"
+                                android:background="@drawable/score_button"
+                                android:textColor="@color/font_dark"
+                                android:enabled="@{viewModel.isStopButtonEnabled}"
+                                android:id="@+id/button_stop"
+                                android:layout_alignParentTop="true"
+                                android:layout_toRightOf="@+id/button_start"
+                                android:layout_toEndOf="@+id/button_start" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <FrameLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
                         android:layout_alignParentBottom="true"
-                        android:layout_below="@+id/button_stop" />
-
-                <Button
-                        android:layout_width="100dp"
-                        android:layout_height="90dp"
-                        android:text="STOP"
-                        android:id="@+id/button_stop"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:id="@+id/overlay"
+                        android:background="@color/black_overlay"
+                        android:visibility="gone"
+                        android:clickable="true"
                         android:layout_alignParentTop="true"
-                        android:layout_toRightOf="@+id/button_start"
-                        android:layout_toEndOf="@+id/button_start" />
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true">
+
+                    <ProgressBar
+                            style="?android:attr/progressBarStyleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/progressBar"
+                            android:layout_gravity="center"
+                            android:indeterminate="true" />
+                </FrameLayout>
+
             </RelativeLayout>
-        </RelativeLayout>
 
-        <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:id="@+id/overlay"
-                android:background="@color/black_overlay"
-                android:visibility="gone"
-                android:clickable="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
 
-            <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progressBar"
-                    android:layout_gravity="center"
-                    android:indeterminate="true" />
-        </FrameLayout>
+        </LinearLayout>
 
+        </LinearLayout>
     </RelativeLayout>
-
-
-</LinearLayout>
+</layout>
