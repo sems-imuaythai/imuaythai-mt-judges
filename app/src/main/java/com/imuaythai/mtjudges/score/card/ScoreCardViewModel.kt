@@ -5,7 +5,7 @@ import com.imuaythai.mtjudges.common.BaseViewModel
 import com.imuaythai.mtjudges.common.live.BooleanLiveData
 import com.imuaythai.mtjudges.common.live.PointLiveData
 import com.imuaythai.mtjudges.common.live.VisibilityLiveData
-import com.imuaythai.mtjudges.point.judge.usecase.SendRoundPointsUseCase
+import com.imuaythai.mtjudges.score.card.usecase.SendRoundPointsUseCase
 import com.imuaythai.mtjudges.provider.dto.AddRingFightPointsDto
 import com.imuaythai.mtjudges.provider.dto.FightPointsDto
 import com.imuaythai.mtjudges.provider.dto.FightState

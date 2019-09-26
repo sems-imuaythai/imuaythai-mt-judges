@@ -1,4 +1,4 @@
-package com.imuaythai.mtjudges.point.judge.usecase
+package com.imuaythai.mtjudges.score.card.usecase
 
 import com.imuaythai.mtjudges.common.model.UseCase
 import com.imuaythai.mtjudges.provider.dto.AddRingFightPointsDto

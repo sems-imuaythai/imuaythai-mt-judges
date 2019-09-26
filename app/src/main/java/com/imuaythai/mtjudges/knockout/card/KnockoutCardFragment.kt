@@ -15,7 +15,9 @@ class KnockoutCardFragment: BaseFragment<KnockoutCardViewModel>(){
 
     override fun provideViewLayout() = R.layout.knockout_card_fragment
 
-    override fun onInjectComponent(component: ApplicationComponent) = component.plus(KnockoutCardModule()).inject(this)
+    override fun onInjectComponent(component: ApplicationComponent) = component.plus(KnockoutCardModule(
+
+    )).inject(this)
 
     override fun provideViewModel(provider: ViewModelProvider): KnockoutCardViewModel = provider.get(KnockoutCardViewModel::class.java)
 

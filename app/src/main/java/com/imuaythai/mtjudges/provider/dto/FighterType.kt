@@ -1,5 +1,5 @@
 package com.imuaythai.mtjudges.provider.dto
 
-enum class PlayerType {
+enum class FighterType {
     RED,BLUE
 }

@@ -6,5 +6,6 @@ enum class FightState {
     PAUSED,
     STOPPED,
     BREAK,
+    DRAW,
     ENDED
 }
