@@ -65,7 +65,7 @@
         android:textColor="@color/font_dark" />
 
         <include
-            layout="@layout/remark_tie_fragment"
+            layout="@layout/draw_card_fragment"
             />
 
 

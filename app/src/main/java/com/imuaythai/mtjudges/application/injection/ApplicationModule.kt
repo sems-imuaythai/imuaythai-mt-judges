@@ -10,7 +10,6 @@ import com.imuaythai.mtjudges.application.NullX509TrustManager
 import com.imuaythai.mtjudges.application.injection.view.model.ViewModelFactory
 import com.imuaythai.mtjudges.application.injection.view.model.ViewModelKey
 import com.imuaythai.mtjudges.application.injection.view.model.EmptyViewModel
-import com.imuaythai.mtjudges.main.MainViewModel
 import com.imuaythai.mtjudges.provider.FightRepositoryImpl
 import com.imuaythai.mtjudges.service.FightDataStore
 import com.imuaythai.mtjudges.service.FightRepository
@@ -65,10 +64,6 @@ class ApplicationModule constructor(
     @Provides @IntoMap
     @ViewModelKey(EmptyViewModel::class)
     fun provideEmptyViewModel(): ViewModel = EmptyViewModel();
-
-    @Provides @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    fun provideMainViewModel(viewModel : MainViewModel): ViewModel = viewModel
 
     @Provides @IntoMap
     @ViewModelKey(TestViewModel::class)
