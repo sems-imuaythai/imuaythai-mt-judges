@@ -4,7 +4,8 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="com.imuaythai.mtjudges.provider.dto.DrawResultType"/>
+        <import type="com.imuaythai.mtjudges.provider.dto.FighterType"/>
         <variable
                 name="viewModel"
                 type="com.imuaythai.mtjudges.draw.card.DrawCardViewModel"/>
@@ -12,147 +13,193 @@
 
     <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout5">
-
-        <TextView
-
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/font_lighten"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[player_red]"
-            android:id="@+id/Red_label"
-            android:layout_alignParentTop="true"
-            android:padding="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@color/red" />
-
-        <TextView
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/font_lighten"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[player_blu]"
-            android:id="@+id/Blu_label"
-            android:layout_alignParentTop="true"
-            android:padding="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="@color/blue" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout5"
-        android:gravity="center_horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="15dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:background="@android:color/white">
-
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="65dp">
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="For most leading off or showing better style"
-                android:id="@+id/button_case_1"
-                android:layout_weight="1"
-                android:capitalize="characters"
-                android:textSize="12sp"
-                android:layout_margin="5dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="For showing better defence"
-                android:id="@+id/button_case_2"
-                android:layout_weight="1"
-                android:textSize="12sp"
-                android:layout_margin="5dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Other"
-                android:id="@+id/button_case_3"
-                android:layout_weight="1"
-                android:layout_margin="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-             >
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal">
-
-                <Button
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:text="Red"
-                    android:id="@+id/button_red" />
-            </LinearLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout5">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Winner"
-                android:id="@+id/textView15"
-                android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-            <LinearLayout
-                android:orientation="horizontal"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/font_lighten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{viewModel.redFighterName}"
+                android:id="@+id/Red_label"
+                android:layout_alignParentTop="true"
+                android:padding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal"
                 android:layout_weight="1"
-                android:gravity="center_horizontal">
-            <Button
-                android:layout_width="80dp"
+                android:background="@color/red" />
+
+            <TextView
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/font_lighten"
+                android:text="@{viewModel.blueFighterName}"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Blue"
-                android:id="@+id/button_blue" />
-            </LinearLayout>
+                android:id="@+id/Blu_label"
+                android:layout_alignParentTop="true"
+                android:padding="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@color/blue" />
+
         </LinearLayout>
 
-        <Button
-            android:layout_width="180dp"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Accept"
-            android:id="@+id/button_accept" />
-    </LinearLayout>
+            android:layout_below="@+id/linearLayout5"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="15dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="65dp">
+
+                <com.imuaythai.mtjudges.ui.widget.CustomStateButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/score_button"
+                    android:textColor="@color/font_dark"
+                    android:textOff="For most leading off or showing better style"
+                    android:textOn="For most leading off or showing better style"
+                    android:checked="@{viewModel.isBetterStyleChecked}"
+                    android:onCheckedChanged="@{(compoundButton, checked) -> viewModel.checkedRadioGroupButton(DrawResultType.MOST_LEADING_OFF_OR_BETTER_STYLE,checked)}"
+                    android:id="@+id/button_case_1"
+                    android:layout_weight="1"
+                    android:capitalize="characters"
+                    android:textSize="12sp"
+                    android:layout_margin="5dp" />
+
+                <com.imuaythai.mtjudges.ui.widget.CustomStateButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/score_button"
+                    android:textColor="@color/font_dark"
+                    android:textOff="For showing better defence"
+                    android:textOn="For showing better defence"
+                    android:checked="@{viewModel.isBetterDefenceChecked}"
+                    android:onCheckedChanged="@{(compoundButton, checked) -> viewModel.checkedRadioGroupButton(DrawResultType.BETTER_DEFENCE,checked)}"
+                    android:id="@+id/button_case_2"
+                    android:layout_weight="1"
+                    android:textSize="12sp"
+                    android:layout_margin="5dp" />
+
+                <com.imuaythai.mtjudges.ui.widget.CustomStateButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/score_button"
+                    android:textColor="@color/font_dark"
+                    android:textOff="Other"
+                    android:textOn="Other"
+                    android:checked="@{viewModel.isOtherChecked}"
+                    android:onCheckedChanged="@{(compoundButton, checked) -> viewModel.checkedRadioGroupButton(DrawResultType.OTHER,checked)}"
+                    android:id="@+id/button_case_3"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                 >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal">
+
+                    <com.imuaythai.mtjudges.ui.widget.CustomStateButton
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/score_button"
+                        android:textColor="@color/font_dark"
+                        android:textOff="Red"
+                        android:textOn="Red"
+                        android:checked="@{viewModel.isRedFighterChecked}"
+                        android:onCheckedChanged="@{(compoundButton, checked) -> viewModel.checkedRadioGroupButton(FighterType.RED,checked)}"
+                        android:id="@+id/button_red" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Winner"
+                    android:id="@+id/textView15"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal">
+                <com.imuaythai.mtjudges.ui.widget.CustomStateButton
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/score_button"
+                    android:textColor="@color/font_dark"
+                    android:textOff="Blue"
+                    android:textOn="Blue"
+                    android:checked="@{viewModel.isBlueFighterChecked}"
+                    android:onCheckedChanged="@{(compoundButton, checked) -> viewModel.checkedRadioGroupButton(FighterType.BLUE,checked)}"
+                    android:id="@+id/button_blue" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="Accept"
+                android:enabled="@{viewModel.isAcceptButtonEnabled}"
+                android:onClick="@{() -> viewModel.clickedSendResult()}"
+                android:background="@drawable/score_button"
+                android:textColor="@color/font_dark"
+                android:id="@+id/button_accept" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/progress_view"
+                android:orientation="vertical"
+                android:visibility="@{viewModel.screenLoadingVisibility}"
+                android:background="#2F030000"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
+
+            <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_centerInParent="true" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

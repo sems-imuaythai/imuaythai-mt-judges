@@ -48,7 +48,7 @@ class MTWebService @Inject constructor(
     override fun login(pin: String): UserDataDto {
 
         val response = webService.authorize(contest().id, ringName, PinDto(pin)).execute()
-        fightDataStore.updateFightStatus(FightStatusDto(1,FightState.STOPPED,3600000))//TODO MOCK
+        fightDataStore.updateFightStatus(FightStatusDto(1,FightState.DRAW,3600000))//TODO MOCK
 
         return read(response){ accessToken ->
             authorizationRepository.setAuthToken(accessToken.accessToken)
