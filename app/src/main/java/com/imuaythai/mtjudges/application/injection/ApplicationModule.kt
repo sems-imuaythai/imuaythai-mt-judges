@@ -17,7 +17,6 @@ import com.imuaythai.mtjudges.settings.model.SettingType
 import com.imuaythai.mtjudges.settings.service.SettingsService
 import com.imuaythai.mtjudges.settings.service.SettingsServiceImpl
 import com.imuaythai.mtjudges.splash.SplashViewModel
-import com.imuaythai.mtjudges.test.TestViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
@@ -64,10 +63,6 @@ class ApplicationModule constructor(
     @Provides @IntoMap
     @ViewModelKey(EmptyViewModel::class)
     fun provideEmptyViewModel(): ViewModel = EmptyViewModel();
-
-    @Provides @IntoMap
-    @ViewModelKey(TestViewModel::class)
-    fun provideTestViewModel(viewModel : TestViewModel): ViewModel = viewModel
 
     @Provides @IntoMap
     @ViewModelKey(SplashViewModel::class)

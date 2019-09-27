@@ -22,7 +22,8 @@ class RadioGroupBehavior<LIVE_DATA:MutableLiveData<Boolean>> {
 
     fun check( comparator: (LIVE_DATA) -> Boolean ){
         val foundObject: LIVE_DATA? = fields.find(comparator)
-        if(foundObject!=null){
+        val selected = getSelected()
+        if(foundObject!=null && (selected == null ||  selected != foundObject)){
             resetRatioState()
             foundObject.postValue(true)
             hasSelected.postValue(true)

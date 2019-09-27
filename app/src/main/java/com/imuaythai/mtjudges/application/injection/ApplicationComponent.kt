@@ -21,7 +21,6 @@ import com.imuaythai.mtjudges.score.card.injection.ScoreCardModule
 import com.imuaythai.mtjudges.settings.injection.SettingsComponent
 import com.imuaythai.mtjudges.settings.injection.SettingsModule
 import com.imuaythai.mtjudges.splash.SplashActivity
-import com.imuaythai.mtjudges.test.TestActivity
 import com.imuaythai.mtjudges.time.judge.injection.TimeJudgeComponent
 import com.imuaythai.mtjudges.time.judge.injection.TimeJudgeModule
 import dagger.Component
@@ -50,8 +49,6 @@ interface ApplicationComponent {
     fun plus(module: DrawCardModule): DrawCardComponent
 
     fun inject(activity: SplashActivity)
-
-    fun inject(activity: TestActivity)
 
     fun plus(module: MainJudgeModule): MainJudgeComponent
 
