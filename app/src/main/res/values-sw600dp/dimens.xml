@@ -1,0 +1,19 @@
+<resources>
+
+    <dimen name="sc_button_height" >60dp</dimen>
+    <dimen name="sc_button_txt_size" >24sp</dimen>
+
+    <dimen name="header_height">125dp</dimen>
+    <dimen name="header_timer_width">220dp</dimen>
+
+    <dimen name="bold_stroke_size">6dp</dimen>
+    <dimen name="half_button_size">26dp</dimen>
+    <dimen name="min_button_size">52dp</dimen>
+    <dimen name="medium_button_size">82dp</dimen>
+    <dimen name="double_button_size">104dp</dimen>
+
+    <dimen name="text_size_normal">24sp</dimen> <!-- 12pt -->
+    <dimen name="text_size_16">32sp</dimen> <!-- 16pt -->
+    <dimen name="text_size_small">20sp</dimen> <!-- 10pt -->
+    <dimen name="text_size_30">40sp</dimen>
+</resources>

@@ -49,7 +49,7 @@ class LoginViewModel @Inject constructor(
             when(response.userRole){
                 UserRole.TIME_JUDGE -> navigate(NavigateToTimeJudgeActivityAction())
                 UserRole.POINT_JUDGE -> navigate(NavigateToPointJudgeActivityAction())
-                UserRole.JURY_JUDGE -> navigate(NavigateToJuryJudgeActivityAction())
+                UserRole.MAIN_JUDGE -> navigate(NavigateToJuryJudgeActivityAction())
             }
         },{ error ->
             pinLoginError.value = error.message

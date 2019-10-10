@@ -17,8 +17,8 @@ class ScoreCardViewModel @Inject constructor(
     private val fightRepository: FightRepository
 ): BaseViewModel(){
 
-    val redFighterName = fightRepository.getFightData().redFighterName
-    val blueFighterName = fightRepository.getFightData().blueFighterName
+    val redFighterName = fightRepository.getFightData()?.redFighterName
+    val blueFighterName = fightRepository.getFightData()?.blueFighterName
 
     val redC = PointLiveData()
     val redKC = PointLiveData()
@@ -69,12 +69,10 @@ class ScoreCardViewModel @Inject constructor(
     fun onClickMinusBlueX() = blueX.decrement()
     fun onClickPlusBlueX() = blueX.increment()
 
-    private var roundNumber: Int = 0
-
     private var fightStatusDisposable = fightRepository.provideFightStatusObservable().subscribe { fightState ->
-        roundNumber = fightState.roundNum
         when(fightState.state){
             FightState.WAITING -> {
+                resetData()
                 isPointButtonsEnabled.setFalse()
                 scoreCardVisibility.setGone()
                 screenLoadingVisibility.setGone()
@@ -133,7 +131,7 @@ class ScoreCardViewModel @Inject constructor(
     fun sendAcceptedPoints() {
 
         val redPointsDto = FightPointsDto(
-            fighterId = fightRepository.getFightData().redFighterId,
+            fighterId = fightRepository.getFightData()!!.redFighterId,
             C = redC.value?:0,
             KO = redKC.value?:0,
             W = redW.value?:0,
@@ -143,7 +141,7 @@ class ScoreCardViewModel @Inject constructor(
         )
 
         val bluePointsDto = FightPointsDto(
-            fighterId = fightRepository.getFightData().blueFighterId,
+            fighterId = fightRepository.getFightData()!!.blueFighterId,
             C = blueC.value?:0,
             KO = blueKC.value?:0,
             W = blueW.value?:0,
@@ -154,7 +152,6 @@ class ScoreCardViewModel @Inject constructor(
 
         val requestObject = SendRoundPointsUseCase.Request(
             AddRingFightPointsDto(
-                roundNumber,
                 redPointsDto,
                 bluePointsDto
             )

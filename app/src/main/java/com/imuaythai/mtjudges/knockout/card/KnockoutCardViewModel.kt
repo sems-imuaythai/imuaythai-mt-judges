@@ -18,8 +18,8 @@ class KnockoutCardViewModel @Inject constructor(
     private val fightRepository: FightRepository
 ): BaseViewModel(){
 
-    val redFighterName = fightRepository.getFightData().redFighterName
-    val blueFighterName = fightRepository.getFightData().blueFighterName
+    val redFighterName = fightRepository.getFightData()?.redFighterName
+    val blueFighterName = fightRepository.getFightData()?.blueFighterName
 
     val isKoHeadRedButtonChecked = knockoutTypeRadio.add(KnockoutButtonLiveData(KnockOutType.KO_HEAD,FighterType.RED))
     val isKoBodyRedButtonChecked = knockoutTypeRadio.add(KnockoutButtonLiveData(KnockOutType.KO_BODY,FighterType.RED))

@@ -1,5 +1,7 @@
 package com.imuaythai.mtjudges.provider
 
+import android.os.Handler
+import android.os.Looper
 import com.imuaythai.mtjudges.provider.dto.FightDataDto
 import com.imuaythai.mtjudges.provider.dto.FightStatusDto
 import com.imuaythai.mtjudges.provider.dto.UserDataDto
@@ -8,25 +10,28 @@ import com.imuaythai.mtjudges.service.FightDataStore
 import com.imuaythai.mtjudges.service.FightRepository
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class FightRepositoryImpl @Inject constructor(): FightRepository, FightDataStore {
 
-    private lateinit var fightDataDto: FightDataDto
+    private var fightDataDto: FightDataDto? = null
 
     private lateinit var userDataDto: UserDataDto
+
+    private val handler = Handler(Looper.getMainLooper())
 
     private var fightStatus: BehaviorSubject<FightStatusDto> = BehaviorSubject.create()
 
     override fun provideFightStatusObservable(): Observable<FightStatusDto>{
-        return fightStatus.subscribeOn(AndroidSchedulers.mainThread())
+        return fightStatus.subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun getFightData(): FightDataDto {
+    override fun getFightData(): FightDataDto? {
         return fightDataDto
     }
 
@@ -40,7 +45,9 @@ class FightRepositoryImpl @Inject constructor(): FightRepository, FightDataStore
     }
 
     override fun updateFightStatus(fightStatusDto: FightStatusDto) {
-        fightStatus.onNext(fightStatusDto)
+        handler.post {
+            fightStatus.onNext(fightStatusDto)
+        }
     }
 
     override fun getUserData(): UserDataDto = userDataDto

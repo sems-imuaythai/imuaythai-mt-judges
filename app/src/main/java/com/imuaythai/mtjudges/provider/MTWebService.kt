@@ -16,7 +16,8 @@ class MTWebService @Inject constructor(
     private val webService: WebService,
     private val authorizationRepository: AuthorizationRepository,
     private val accessTokenDecoder: AccessTokenDecoder,
-    private val fightDataStore: FightDataStore
+    private val fightDataStore: FightDataStore,
+    private val fightRepository: FightRepository
 ): MTService {
 
     override fun contest(): ContestDto {
@@ -37,18 +38,22 @@ class MTWebService @Inject constructor(
 
     override fun fight(): FightDataDto {
 
-        val response = webService.fight(contest().id, ringName).execute()
+        val fightData = fightRepository.getFightData()
 
-        return read(response){ fightDto ->
-            fightDataStore.saveFight(fightDto)
-            fightDto
+        return if(fightData != null){
+            fightData
+        } else {
+            val response = webService.fight(contest().id, ringName).execute()
+            read(response){ fightDto ->
+                fightDataStore.saveFight(fightDto)
+                fightDto
+            }
         }
     }
 
     override fun login(pin: String): UserDataDto {
 
         val response = webService.authorize(contest().id, ringName, PinDto(pin)).execute()
-        fightDataStore.updateFightStatus(FightStatusDto(1,FightState.DRAW,3600000))//TODO MOCK
 
         return read(response){ accessToken ->
             authorizationRepository.setAuthToken(accessToken.accessToken)
@@ -59,20 +64,57 @@ class MTWebService @Inject constructor(
     }
 
     override fun sendRoundPoints(points: AddRingFightPointsDto) {
-        val response = webService.sendPoints(contest().id, ringName, points).execute()
-        return read(response){ fightDataDto -> }
+        readSuccess(webService.sendPoints(
+            contest().id, ringName, fight().fightId, 1, points
+        ).execute())
+    }
+
+    override fun startRound() {
+        readSuccess(webService.startRound(
+            contest().id, ringName, fight().fightId, 1
+        ).execute())
+    }
+
+    override fun pauseFight() {
+        readSuccess(webService.pauseFight(
+            contest().id, ringName, fight().fightId, 1
+        ).execute())
+    }
+
+    override fun resumeFight() {
+        readSuccess(webService.resumeFight(
+            contest().id, ringName, fight().fightId, 1
+        ).execute())
+    }
+
+    override fun resetFight() {
+        readSuccess(webService.resetFight(
+            contest().id, ringName, fight().fightId
+        ).execute())
     }
 
     override fun sendKnockOutResult(knockOutDto: KnockOutDto) {
 
     }
 
-    override fun commitResult() {
-
+    override fun acceptResult() {
+        readSuccess(webService.acceptResults(
+            contest().id, ringName, fight().fightId, 1
+        ).execute())
     }
 
     override fun logout() {
         authorizationRepository.clearSession()
+    }
+
+    private fun <T> readSuccess(response: Response<T?>) {
+        if(response.isSuccessful){
+            /* do nothing */
+        } else if (response.code() == 401){
+            throw SessionExpiredException()
+        } else {
+            throw RequestException()
+        }
     }
 
     private fun <T,R> read(response: Response<T?>, callable: (T) -> R ): R{

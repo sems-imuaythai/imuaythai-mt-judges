@@ -164,10 +164,11 @@ public class HubConnection {
                 }
             }
 
+
             HubMessage[] messages = protocol.parseMessages(payload, connectionState);
 
             for (HubMessage message : messages) {
-                logger.debug("Received message of type {}.", message.getMessageType());
+                logger.debug("Received message of type={} payload={}.", message.getMessageType(), payload);
                 switch (message.getMessageType()) {
                     case INVOCATION_BINDING_FAILURE:
                         InvocationBindingFailureMessage msg = (InvocationBindingFailureMessage)message;
@@ -552,11 +553,13 @@ public class HubConnection {
         String serializedMessage = protocol.writeMessage(message);
         if (message.getMessageType() == HubMessageType.INVOCATION ) {
             logger.debug("Sending {} message '{}'.", message.getMessageType().name(), ((InvocationMessage)message).getInvocationId());
+            logger.debug("serializedMessage {}", serializedMessage);
         } else  if (message.getMessageType() == HubMessageType.STREAM_INVOCATION) {
             logger.debug("Sending {} message '{}'.", message.getMessageType().name(), ((StreamInvocationMessage)message).getInvocationId());
         } else {
             logger.debug("Sending {} message.", message.getMessageType().name());
         }
+
         transport.send(serializedMessage);
 
         resetKeepAlive();

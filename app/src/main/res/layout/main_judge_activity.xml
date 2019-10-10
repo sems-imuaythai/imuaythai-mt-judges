@@ -20,7 +20,7 @@
                   android:id="@+id/header_fragment"
                   tools:layout="@layout/header_fragment"
                   android:layout_width="match_parent"
-                  android:layout_height="80dp" />
+                  android:layout_height="@dimen/header_height" />
 
         <RelativeLayout android:orientation="vertical" android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -33,14 +33,13 @@
                 android:id="@+id/linearLayout5">
 
                 <TextView
-
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/font_lighten"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="[player_red]"
+                    android:text="@{viewModel.redFighterName}"
+                    tools:text="[player_red]"
                     android:id="@+id/Red_label"
                     android:layout_alignParentTop="true"
                     android:padding="10dp"
@@ -56,10 +55,10 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/font_lighten"
-
+                    android:text="@{viewModel.blueFighterName}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="[player_blu]"
+                    tools:text="[player_blu]"
                     android:id="@+id/Blu_label"
                     android:layout_alignParentTop="true"
                     android:padding="10dp"
@@ -90,6 +89,7 @@
                     android:layout_height="fill_parent">
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -193,17 +193,33 @@
 
                         <Button
                             android:layout_width="210dp"
+                            android:enabled="@{viewModel.isAcceptResultsButtonEnabled}"
+                            android:onClick="@{()->viewModel.acceptResults()}"
                             android:layout_height="wrap_content"
-                            android:text="SEND"
                             android:background="@drawable/score_button"
-                            android:id="@+id/button_send" />
+                            android:textColor="@color/font_dark"
+                            android:text="ACCEPT RESULTS"
+                            android:id="@+id/button_accept_results" />
 
                         <Button
                             android:layout_width="210dp"
                             android:layout_height="wrap_content"
+                            android:enabled="@{viewModel.isStartRoundButtonEnabled}"
+                            android:onClick="@{()->viewModel.startRound()}"
+                            android:text="START ROUND"
                             android:background="@drawable/score_button"
-                            android:text="EDIT"
-                            android:id="@+id/button_edit" />
+                            android:textColor="@color/font_dark"
+                            android:id="@+id/button_start_round" />
+
+                        <Button
+                                android:layout_width="210dp"
+                                android:layout_height="wrap_content"
+                                android:onClick="@{()->viewModel.resetFight()}"
+                                android:text="RESET FIGHT"
+                                android:background="@drawable/score_button"
+                                android:textColor="@color/font_dark"
+                                android:id="@+id/button_reset_fight" />
+
                     </LinearLayout>
 
                 </LinearLayout>

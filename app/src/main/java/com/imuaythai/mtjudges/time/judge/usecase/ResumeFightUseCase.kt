@@ -4,16 +4,16 @@ import com.imuaythai.mtjudges.common.model.UseCase
 import com.imuaythai.mtjudges.service.MTService
 import javax.inject.Inject
 
-class PauseFightUseCase @Inject constructor(
+class ResumeFightUseCase @Inject constructor(
     private val mtService: MTService
-): UseCase<PauseFightUseCase.Request, PauseFightUseCase.Response> {
+): UseCase<ResumeFightUseCase.Request, ResumeFightUseCase.Response> {
 
     class Request{}
 
     class Response{}
 
     override fun execute(request: Request): Response {
-        mtService.pauseFight()
+        mtService.resumeFight()
         return Response()
     }
 }

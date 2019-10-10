@@ -102,7 +102,8 @@
         <item name="android:textSize" >@dimen/sc_button_txt_size</item>
         <item name="android:layout_margin">1dp</item>
         <item name="android:gravity">center_horizontal|center_vertical</item>
-        <item name="android:minHeight">@dimen/sc_button_height</item>
+        <item name="android:layout_height">@dimen/sc_button_height</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_weight">1</item>
     </style>
 

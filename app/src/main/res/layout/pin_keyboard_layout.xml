@@ -110,7 +110,7 @@
                         style="@style/code_input"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="@dimen/min_button_size"
                         android:layout_alignParentTop="true"
                         android:gravity="center_vertical|center_horizontal"
                         android:layout_alignLeft="@+id/keyboard_view"
@@ -121,23 +121,23 @@
                 <ImageView
                         android:id="@+id/char_input_1"
                         android:padding="6dp"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
+                        android:layout_width="@dimen/half_button_size"
+                        android:layout_height="@dimen/half_button_size"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_black_circle"/>
 
                 <ImageView
                         android:id="@+id/char_input_2"
                         android:padding="6dp"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
+                        android:layout_width="@dimen/half_button_size"
+                        android:layout_height="@dimen/half_button_size"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_black_circle"/>
 
                 <ImageView
                         android:id="@+id/char_input_3"
                         android:padding="6dp"
-                        android:layout_width="28dp"
+                        android:layout_width="@dimen/half_button_size"
                         android:layout_height="6dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_black_circle"/>
@@ -147,7 +147,7 @@
                 <ImageView
                         android:id="@+id/char_input_4"
                         android:padding="6dp"
-                        android:layout_width="28dp"
+                        android:layout_width="@dimen/half_button_size"
                         android:layout_height="6dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_black_circle"/>
@@ -155,7 +155,7 @@
                 <ImageView
                         android:id="@+id/char_input_5"
                         android:padding="6dp"
-                        android:layout_width="28dp"
+                        android:layout_width="@dimen/half_button_size"
                         android:layout_height="6dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_black_circle"/>
@@ -163,7 +163,7 @@
                 <ImageView
                         android:id="@+id/char_input_6"
                         android:padding="6dp"
-                        android:layout_width="28dp"
+                        android:layout_width="@dimen/half_button_size"
                         android:layout_height="6dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_black_circle"/>

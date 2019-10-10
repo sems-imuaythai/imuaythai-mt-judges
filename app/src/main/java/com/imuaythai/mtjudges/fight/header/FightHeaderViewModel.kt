@@ -18,9 +18,9 @@ class FightHeaderViewModel @Inject constructor(
             fightRepository.getUserData().familyName + " (" +
             fightRepository.getUserRole().name + ")"
 
-    val fightDurationSummaryText = fightRepository.getFightData().rounds.toString() + "x" + fightRepository.getFightData().roundDuration
+    val fightDurationSummaryText = fightRepository.getFightData()?.rounds.toString() + "x" + fightRepository.getFightData()?.roundDuration
 
-    val weightCategorySummaryText = fightRepository.getFightData().weightCategory
+    val weightCategorySummaryText = fightRepository.getFightData()?.weightCategory
 
     val refereeNameSummaryText: String = ""
 
@@ -28,7 +28,7 @@ class FightHeaderViewModel @Inject constructor(
 
     private val periodMillis: Long = 100
 
-    private val timer: Timer = Timer()
+    private var timer: Timer = Timer()
 
     private var currentFightState: FightState = FightState.WAITING
 
@@ -42,6 +42,8 @@ class FightHeaderViewModel @Inject constructor(
                 }
                 FightState.STARTED -> {
                     timerMillis = fightState.time
+                    timer.purge()
+                    timer = Timer()
                     timer.scheduleAtFixedRate(UpdateTimeTask(), 0, periodMillis)
                 }
                 FightState.PAUSED -> {
@@ -52,6 +54,8 @@ class FightHeaderViewModel @Inject constructor(
                 }
                 FightState.BREAK -> {
                     timerMillis = fightState.time
+                    timer.purge()
+                    timer = Timer()
                     timer.scheduleAtFixedRate(UpdateTimeTask(), 0, periodMillis)
                 }
                 FightState.ENDED -> {
@@ -88,6 +92,7 @@ class FightHeaderViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
+        timer.purge()
         fightStatusDisposable.dispose()
     }
 

@@ -2,12 +2,13 @@ package com.imuaythai.mtjudges.provider.hubservice
 
 import androidx.lifecycle.LiveData
 import com.imuaythai.mtjudges.provider.hubservice.dto.ConnectionState
-import com.imuaythai.mtjudges.provider.hubservice.dto.FightDescription
 
 interface HubService {
 
-    fun connect(): LiveData<ConnectionState>
+    fun connectionState(): LiveData<ConnectionState>
 
+    fun connect()
 
+    fun join(fightId: Int)
 
 }

@@ -21,8 +21,8 @@ class DrawCardViewModel @Inject constructor(
     private val fightRepository: FightRepository
 ): BaseViewModel(){
 
-    val redFighterName = fightRepository.getFightData().redFighterName
-    val blueFighterName = fightRepository.getFightData().blueFighterName
+    val redFighterName = fightRepository.getFightData()?.redFighterName
+    val blueFighterName = fightRepository.getFightData()?.blueFighterName
 
     val isBetterStyleChecked = drawResultBehavior.add(DrawResultButtonLiveData(DrawResultType.MOST_LEADING_OFF_OR_BETTER_STYLE))
     val isBetterDefenceChecked = drawResultBehavior.add(DrawResultButtonLiveData(DrawResultType.BETTER_DEFENCE))

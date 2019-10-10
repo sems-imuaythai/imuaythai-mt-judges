@@ -2,12 +2,20 @@
 
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="header_height">64dp</dimen>
+    <dimen name="header_timer_width">180dp</dimen>
+
+    <dimen name="bold_stroke_size">5dp</dimen>
+    <dimen name="half_button_size">24dp</dimen>
+    <dimen name="min_button_size">48dp</dimen>
+    <dimen name="medium_button_size">64dp</dimen>
+    <dimen name="double_button_size">96dp</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="sc_button_txt_size" >16sp</dimen>
-    <dimen name="sc_button_height" >32sp</dimen>
+    <dimen name="sc_button_height" >32dp</dimen>
     <dimen name="jury_name_col_width">180dp</dimen>
     <dimen name="jury_lp_col_width">48dp</dimen>
     <dimen name="jury_totals_col_width">100dp</dimen>
@@ -15,7 +23,7 @@
 
     <dimen name="margin_normal" >16dp</dimen>
 
-
+    <dimen name="text_size_30">30sp</dimen>
     <dimen name="text_size_48">76sp</dimen> <!-- 48pt -->
     <dimen name="text_size_40">60sp</dimen> <!-- 40pt -->
     <dimen name="text_size_very_big">39sp</dimen> <!-- 26pt -->

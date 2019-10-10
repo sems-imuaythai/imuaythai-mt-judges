@@ -3,11 +3,15 @@ package com.imuaythai.mtjudges.provider.dto
 import com.google.gson.annotations.SerializedName
 
 data class FightDataDto(
+
+    @SerializedName("fightId")
+    val fightId: Int,
+
     @SerializedName("weightCategory")
     val weightCategory: String,
 
     @SerializedName("rounds")
-    val rounds: Int,
+    val rounds: List<RoundDto>,
 
     @SerializedName("roundDuration")
     val roundDuration: Int,

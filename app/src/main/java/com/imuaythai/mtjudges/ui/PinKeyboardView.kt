@@ -7,7 +7,6 @@ import android.widget.*
 import com.imuaythai.mtjudges.R
 import android.animation.ValueAnimator
 import android.view.animation.AccelerateDecelerateInterpolator
-import com.imuaythai.mtjudges.common.view.toPx
 
 
 class PinKeyboardView: FrameLayout{
@@ -94,8 +93,12 @@ class PinKeyboardView: FrameLayout{
     }
 
     private fun setDotHeight( dotView: ImageView, isActive: Boolean ){
+
+        val maxHeightPixels = resources.getDimension(R.dimen.half_button_size).toInt()
+        val minHeightPixels = resources.getDimension(R.dimen.bold_stroke_size).toInt()
+
         if(isActive) {
-            val anim = ValueAnimator.ofInt(dotView.measuredHeight, 28.toPx())
+            val anim = ValueAnimator.ofInt(dotView.measuredHeight, maxHeightPixels)
             anim.interpolator = AccelerateDecelerateInterpolator()
             anim.addUpdateListener { valueAnimator ->
                 val value = valueAnimator.animatedValue as Int
@@ -103,10 +106,10 @@ class PinKeyboardView: FrameLayout{
                 layoutParams.height = value
                 dotView.layoutParams = layoutParams
             }
-            anim.duration = 80
+            anim.duration = 50
             anim.start()
         }else{
-            val anim = ValueAnimator.ofInt(dotView.measuredHeight, 5.toPx())
+            val anim = ValueAnimator.ofInt(dotView.measuredHeight, minHeightPixels)
             anim.interpolator = AccelerateDecelerateInterpolator()
             anim.addUpdateListener { valueAnimator ->
                 val value = valueAnimator.animatedValue as Int
@@ -114,14 +117,14 @@ class PinKeyboardView: FrameLayout{
                 layoutParams.height = value
                 dotView.layoutParams = layoutParams
             }
-            anim.duration = 80
+            anim.duration = 50
             anim.start()
         }
     }
 
     private fun clearDotHeight(dotView: ImageView){
         val layoutParams = dotView.layoutParams
-        layoutParams.height = 5.toPx()
+        layoutParams.height = resources.getDimension(R.dimen.bold_stroke_size).toInt()
         dotView.layoutParams = layoutParams
     }
 

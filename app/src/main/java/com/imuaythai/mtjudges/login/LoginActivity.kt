@@ -2,6 +2,7 @@ package com.imuaythai.mtjudges.login
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.imuaythai.mtjudges.R
 import com.imuaythai.mtjudges.application.injection.ApplicationComponent
 import com.imuaythai.mtjudges.common.BaseActivity
@@ -54,7 +55,9 @@ class LoginActivity: BaseActivity<LoginViewModel>() {
         })
 
         viewModel.pinLoginError.observe(this, Observer {
-            pin_keyboard.displayError(it)
+            val message = it?: "Incorrect password"
+            pin_keyboard.displayError(message)
+            Snackbar.make(content_layout, message, Snackbar.LENGTH_LONG).show();
         })
 
     }

@@ -120,8 +120,8 @@
                         android:layout_centerHorizontal="true">
 
                     <ImageView
-                            android:layout_width="96dp"
-                            android:layout_height="96dp"
+                            android:layout_width="@dimen/double_button_size"
+                            android:layout_height="@dimen/double_button_size"
                             android:padding="8dp"
                             android:src="@drawable/ic_connection_lost"  />
 
@@ -158,8 +158,8 @@
                 <ProgressBar
                         android:id="@+id/progress_bar"
                         style="?android:attr/progressBarStyleLarge"
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
+                        android:layout_width="@dimen/double_button_size"
+                        android:layout_height="@dimen/double_button_size"
                         android:layout_centerInParent="true" />
 
                 <TextView
@@ -174,8 +174,8 @@
 
             <ImageView
                     android:id="@+id/btn_settings"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="@dimen/min_button_size"
+                    android:layout_height="@dimen/min_button_size"
                     android:padding="8dp"
                     android:src="@drawable/ic_settings"
                     android:layout_alignParentRight="true"
@@ -188,8 +188,8 @@
                     android:background="@color/text_color_main"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="@dimen/min_button_size"
+                    android:layout_height="@dimen/min_button_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:id="@+id/ring_text_view"/>

@@ -2,12 +2,12 @@
 <resources>
 
     <style name="login_keyboard_button">
-        <item name="android:layout_width">64dp</item>
-        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_width">@dimen/medium_button_size</item>
+        <item name="android:layout_height">@dimen/medium_button_size</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:background">@drawable/button_oval_stroke</item>
         <item name="android:textColor">@color/font_dark</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">@dimen/text_size_30</item>
     </style>
 
 

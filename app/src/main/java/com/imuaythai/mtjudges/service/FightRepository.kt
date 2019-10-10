@@ -10,7 +10,7 @@ interface FightRepository {
 
     fun provideFightStatusObservable(): Observable<FightStatusDto>
 
-    fun getFightData(): FightDataDto
+    fun getFightData(): FightDataDto?
 
     fun getUserData(): UserDataDto
 

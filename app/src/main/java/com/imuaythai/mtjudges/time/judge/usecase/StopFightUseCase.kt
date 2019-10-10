@@ -1,7 +1,6 @@
 package com.imuaythai.mtjudges.time.judge.usecase
 
 import com.imuaythai.mtjudges.common.model.UseCase
-import com.imuaythai.mtjudges.provider.dto.AddRingFightPointsDto
 import com.imuaythai.mtjudges.service.MTService
 import javax.inject.Inject
 
